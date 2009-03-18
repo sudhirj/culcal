@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import wsgiref.handlers
+import wsgiref.handlers, settings
 
 from google.appengine.ext import webapp
 
@@ -12,7 +12,7 @@ class MainHandler(webapp.RequestHandler):
 
 def main():
   application = webapp.WSGIApplication([('/', MainHandler)],
-                                       debug=True)
+                                       settings.DEBUG)
   wsgiref.handlers.CGIHandler().run(application)
 
 
