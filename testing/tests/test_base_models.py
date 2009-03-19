@@ -10,6 +10,8 @@ class NamedEntityTests(unittest.TestCase):
     self.assertRaises(BadValueError,NamedEntity,None)
     entity = NamedEntity(name="name")
     self.assertEqual("name",entity.name)
+    entity2 = NamedEntity("name2")
+    self.assertEqual("name2",entity2.name)
   
   def test_inherits(self):
     self.assertRaises(BadValueError,Tag,None)

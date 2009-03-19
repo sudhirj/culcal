@@ -1,5 +1,13 @@
 from google.appengine.ext import db
 
-class NamedEntity(db.Model):
+
+class Entity(db.Model):
+  created_at = db.DateTimeProperty(auto_now_add = True)
+  updated_at = db.DateTimeProperty(auto_now = True)
+  
+class NamedEntity(Entity):
   name = db.StringProperty(required = True)
-  datetime = db.DateTimeProperty(auto_now_add = True)
+  
+  def __init__(self, name):
+    self.name = name
+
