@@ -10,9 +10,12 @@ class MainHandler(webapp.RequestHandler):
     self.response.out.write('Hello world!')
 
 
+ROUTES = [
+  ('/', MainHandler)
+]
+
 def main():
-  application = webapp.WSGIApplication([('/', MainHandler)],
-                                       settings.DEBUG)
+  application = webapp.WSGIApplication(ROUTES, settings.DEBUG)
   wsgiref.handlers.CGIHandler().run(application)
 
 

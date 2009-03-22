@@ -1,18 +1,24 @@
 import unittest,settings
 from models.base_models import NamedEntity
-from models.tag import Tag
-from models.venue import Venue
-from google.appengine.ext.db import *
+from google.appengine.ext import db 
+from models import tag
+from models import show
+from models import venue
+from models import performance
+from models import company
+from models import city
 
 
 class NamedEntityTests(unittest.TestCase):
   def test_named_entity_validations(self):
-    self.assertRaises(BadValueError,NamedEntity,None)
-    entity = NamedEntity(name="name")
-    self.assertEqual("name",entity.name)
-    entity2 = NamedEntity("name2")
-    self.assertEqual("name2",entity2.name)
+    self.assertRaises(db.BadValueError,NamedEntity,None)
+    entity = NamedEntity(name="name1")
+    self.assertEqual("name1",entity.name)
   
   def test_inherits(self):
-    self.assertRaises(BadValueError,Tag,None)
-    self.assertRaises(BadValueError,Venue,None)
+    self.assertRaises(db.BadValueError,show.Show,None)
+    self.assertRaises(db.BadValueError,venue.Venue,None)
+    self.assertRaises(db.BadValueError,tag.Tag,None)
+    self.assertRaises(db.BadValueError,performance.Performance,None)
+    self.assertRaises(db.BadValueError,company.Company,None)
+    self.assertRaises(db.BadValueError,city.City,None)

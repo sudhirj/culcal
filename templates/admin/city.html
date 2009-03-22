@@ -1,0 +1,22 @@
+{% extends "admin_base.html" %}
+{% block content %}
+{% if cities %}
+<div>
+	<h3>Existing Cities</h3>
+	{% for city in cities %}
+	<form action="/_admin/city" method="POST">
+	<p>{{ city.name }}</p>
+	<input type="hidden" value="{{city.key}}" name="key"/>
+	<input type="hidden" value="delete" name="action">
+	<input type="submit" text="Delete" value="Delete?">
+	</form>
+	{% endfor %}
+</div>
+{% endif %}
+<div>
+	<h3>Create a new City</h3>
+	<form action="/_admin/city" method="POST">
+	<div><input type="text" name="city_name"/><input type="submit"/></div>
+	</form>
+</div>	
+{% endblock %}

@@ -8,6 +8,6 @@ class Entity(db.Model):
 class NamedEntity(Entity):
   name = db.StringProperty(required = True)
   
-  def __init__(self, name):
-    self.name = name
 
+      
+      

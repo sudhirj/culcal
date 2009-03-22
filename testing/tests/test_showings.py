@@ -1,7 +1,7 @@
 import unittest
 from google.appengine.ext.db import *
-from models.showing import Showing
+from models.performance import Performance
 
-class ShowingTests(unittest.TestCase):
-  def test_showing_creation(self):
-    self.assertRaises(BadValueError,Showing,None)
+class PerformanceModelTests(unittest.TestCase):
+  def test_performance_creation(self):
+    self.assertRaises(BadValueError,Performance,None)
