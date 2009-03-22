@@ -1,5 +1,5 @@
 from google.appengine.ext import db
-import base_models
+import basemodels
 
-class City(base_models.NamedEntity):
+class City(basemodels.NamedEntity):
   pass

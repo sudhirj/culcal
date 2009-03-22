@@ -1,29 +1,29 @@
 #!/usr/bin/env python
 import wsgiref.handlers, settings, logging
-from handlers import base_handler
+from handlers import basehandler
 from models.city import City
 from google.appengine.ext import webapp
 
 
 
-class CityHandler(base_handler.CustomHandler):
+class CityHandler(basehandler.CustomHandler):
 
   def get(self):
     self.render("admin/city.html",  dict(cities=City.all()))
     logging.info(City.all())
   
   def post(self):
-    if self.read_param('action') == 'delete':
+    if self.is_delete_request():
       self.delete(self.read_param('key'))
       self.get()
       return
-    city = City(name=self.read_param("city_name"))
+    city = City(name=self.read_param('name'))
     city.put()
     self.get()
 
   def delete(self, key):
     city = City.get(key)
-    city.delete()
+    if city: city.delete()
 
 ROUTES = [
   ('/_admin/city', CityHandler)

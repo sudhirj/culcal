@@ -1,8 +1,8 @@
 from google.appengine.ext import db
 from company import Company
-import base_models
+import basemodels
 
-class Show(base_models.NamedEntity):
+class Show(basemodels.NamedEntity):
   company = db.ReferenceProperty(Company,collection_name='shows')
   
   

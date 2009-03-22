@@ -1,5 +1,5 @@
 import unittest,settings
-from models.base_models import NamedEntity
+from models.basemodels import NamedEntity
 from google.appengine.ext import db 
 from models import tag
 from models import show

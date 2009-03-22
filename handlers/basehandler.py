@@ -18,3 +18,5 @@ class CustomHandler(webapp.RequestHandler):
     self.respond(template.render(utils.path(template_path),data))
   def read_param(self,name):
     return cgi.escape(self.request.get(name))
+  def is_delete_request(self):
+    return self.read_param('action') == 'delete'
