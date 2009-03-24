@@ -1,4 +1,4 @@
-import unittest,settings
+import extendedtestcase,settings
 from models.basemodels import NamedEntity
 from google.appengine.ext import db 
 from models import tag
@@ -9,7 +9,7 @@ from models import company
 from models import city
 
 
-class NamedEntityTests(unittest.TestCase):
+class NamedEntityTests(extendedtestcase.ExtendedTestCase):
   def test_named_entity_validations(self):
     self.assertRaises(db.BadValueError,NamedEntity,None)
     entity = NamedEntity(name="name1")
