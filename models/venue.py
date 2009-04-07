@@ -1,6 +1,6 @@
 from google.appengine.ext import db
-import basemodels
+import base
 from models.city import City
 
-class Venue(basemodels.NamedEntity):
+class Venue(base.NamedEntity):
   city = db.ReferenceProperty(City,collection_name='venues')

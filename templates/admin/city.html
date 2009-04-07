@@ -9,7 +9,7 @@
 			<input type="submit" value="Delete?">
 		</p>
 		<input type="hidden" value="{{city.key}}" name="key"/>
-		<input type="hidden" value="delete" name="action">
+		<input type="hidden" value="delete" name="action"/>
 	</form>
 	{% endfor %}
 </div>
@@ -18,6 +18,7 @@
 	<h3>Create a new City</h3>
 	<form action="/_admin/city" method="POST">
 		<div><input type="text" name="name"/><input type="submit"/></div>
+		<input type="hidden" value="create" name="action"/>
 	</form>
 </div>	
 {% endblock %}

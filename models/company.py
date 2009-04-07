@@ -1,5 +1,5 @@
 from google.appengine.ext import db
-import basemodels
+import base
 
-class Company(basemodels.NamedEntity):
+class Company(base.NamedEntity):
   pass
