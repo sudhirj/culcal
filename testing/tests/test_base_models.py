@@ -1,5 +1,5 @@
-import extendedtestcase,settings
-from models.base import NamedEntity
+import extendedtestcase,settings, re
+from models.base import NamedEntity, UrlBasedEntity
 from google.appengine.ext import db 
 from models import tag
 from models import show
@@ -22,3 +22,14 @@ class NamedEntityTests(extendedtestcase.ExtendedTestCase):
     self.assertRaises(db.BadValueError,performance.Performance,None)
     self.assertRaises(db.BadValueError,company.Company,None)
     self.assertRaises(db.BadValueError,city.City,None)
+    
+
+class UrlBasedEntityTests(extendedtestcase.ExtendedTestCase):
+  def test_url_validations(self):
+    UrlBasedEntity(name = 'Chennai', url = 'chennai-city')
+    self.assertRaises(ValueError,UrlBasedEntity,name = "name1", url = "chennai city")
+    self.assertRaises(ValueError,UrlBasedEntity,name = "name1", url = "chennai.city")
+    self.assertRaises(db.BadValueError,UrlBasedEntity,name = "name1", url = "")
+    self.assertRaises(ValueError,UrlBasedEntity,name = "name1", url = " ")
+    self.assertRaises(ValueError,UrlBasedEntity,name = "name1", url = "che'nnai#$%@city")
+  

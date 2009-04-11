@@ -1,0 +1,33 @@
+{% extends "admin_base.html" %}
+{% block content %}
+{% if shows %}
+<div>
+	<h3>Existing Shows</h3>
+	{% for show in shows %}
+	<form action="/_admin/show" method="POST">
+		<p>{{ show.name }} ({{show.url}}) by {{show.company.name}}
+			<input type="submit" onclick="return confirm('Do you really want to delete this show?')" value="Delete?">
+		</p>
+		<input type="hidden" value="{{show.key}}" name="key"/>
+		<input type="hidden" value="delete" name="action">
+	</form>
+	{% endfor %}
+</div>
+{% endif %}
+<div>
+	<h3>Create a new show</h3>
+	<form action="/_admin/show" method="POST">
+		<input type="hidden" value="create" name="action"/>
+		<div>
+			<input type="text" name="name"/>
+			<select name = "company">
+				{% for company in companies %}
+				<option value = "{{company.url}}">{{company.name}}</option>
+				{% endfor %}
+			</select>
+			<input type ="text" name ="url"/>
+			<input type="submit"/>
+		</div>
+	</form>
+</div>	
+{% endblock %}

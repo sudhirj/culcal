@@ -4,3 +4,4 @@ import base
 
 class Show(base.NamedEntity):
   company = db.ReferenceProperty(Company,collection_name='shows')
+  url = db.StringProperty()

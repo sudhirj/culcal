@@ -5,8 +5,8 @@
 	<h3>Existing Cities</h3>
 	{% for city in cities %}
 	<form action="/_admin/city" method="POST">
-		<p>{{ city.name }}
-			<input type="submit" value="Delete?">
+		<p>{{ city.name }} ({{city.url}})
+			<input type="submit" onclick="return confirm('Are you sure you want to delete {{city.name}}?');" value="Delete ?">
 		</p>
 		<input type="hidden" value="{{city.key}}" name="key"/>
 		<input type="hidden" value="delete" name="action"/>
@@ -17,7 +17,11 @@
 <div>
 	<h3>Create a new City</h3>
 	<form action="/_admin/city" method="POST">
-		<div><input type="text" name="name"/><input type="submit"/></div>
+		<div>
+			<input type="text" name="name"/>
+			<input type="text" name="url"/>
+			<input type="submit"/>
+		</div>
 		<input type="hidden" value="create" name="action"/>
 	</form>
 </div>	

@@ -1,5 +1,7 @@
 from google.appengine.ext import db
 import base
 
-class City(base.NamedEntity):
+class City(base.UrlBasedEntity):
   pass
+ 
+  

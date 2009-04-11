@@ -4,9 +4,9 @@ from google.appengine.ext import webapp
 
 
 class CustomHandler(webapp.RequestHandler):
-  def handle_exception(self,exception, debug_mode):
-    self.response.out.write(exception)
-    self.response.set_status(403)
+  # def handle_exception(self,exception, debug_mode):
+  #   self.response.out.write(exception)
+  #   self.response.set_status(403)
     
   def respond(self,resp):
     self.response.out.write(resp)

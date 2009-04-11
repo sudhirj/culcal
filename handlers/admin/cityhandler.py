@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 import wsgiref.handlers, settings, logging
 from handlers import base
-from models.city import City
 from google.appengine.ext import webapp
+from models.city import City
 
 class CityHandler(base.CrudHandler):
   def get(self):
     self.render("admin/city.html", dict(cities = City.all()))
   
   def create(self):
-    City(name = self.read('name')).put()
+    City(name = self.read('name'), url = self.read('url')).put()
     self.get()
 
   def delete(self):
