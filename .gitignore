@@ -3,3 +3,4 @@
 tmtags
 .project
 .pydevproject
+*.tmp_*
