@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import wsgiref.handlers, settings
-
 from google.appengine.ext import webapp
+import wsgiref.handlers
+import settings
+
 
 class MainHandler(webapp.RequestHandler):
   def get(self):

@@ -1,7 +1,10 @@
-import os,logging
 from google.appengine.api import users
+import logging
+import os
+
 def path(file_path='/'):
     return os.path.join(os.path.dirname(__file__), "templates/"+file_path )
+   
     
 def authdetails(page = "/"):
     user = users.get_current_user()

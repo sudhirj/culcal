@@ -1,12 +1,9 @@
-import extendedtestcase,settings, re
+from google.appengine.ext import db
+from models import city, company, performance, show, tag, venue
 from models.base import NamedEntity, UrlBasedEntity
-from google.appengine.ext import db 
-from models import tag
-from models import show
-from models import venue
-from models import performance
-from models import company
-from models import city
+import extendedtestcase
+import re
+import settings
 
 
 class NamedEntityTests(extendedtestcase.ExtendedTestCase):

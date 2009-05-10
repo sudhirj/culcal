@@ -4,9 +4,9 @@ runtime: python
 api_version: 1
 
 handlers:
-  
 - url: /test.*
-  script: testing/gaeunit.py
+  script: gaeunit.py
+  login: admin
 
 - url: /_admin.*
   script: handlers/admin/main.py
