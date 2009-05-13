@@ -9,7 +9,7 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         city1 = City(name="some city", url=url)
         city1.put()
         city2 = City(name="some other city", url=url)
-        self.assertRaises(ValueError, city2.put)
+        self.assertRaises(ValueError, city2.put)    
 
     def test_basic_validations(self):
         self.assertRaises(BadValueError, City, name="city 1")

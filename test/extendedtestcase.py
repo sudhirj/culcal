@@ -4,8 +4,7 @@ from models.company import Company
 from models.city import City
 
 class ExtendedTestCase(unittest.TestCase): 
-    
-    def random(self, salt = 1):
+    def random(self, salt=1):
         import hashlib, time
         return hashlib.md5((time.clock()*salt).__str__()).hexdigest()
     
@@ -13,11 +12,7 @@ class ExtendedTestCase(unittest.TestCase):
         self.temp_gcu = users.get_current_user
         self.temp_icua = users.is_current_user_admin
         
-        self.evam = Company(name='Evam Theatre Company', url='evam')
-        self.evam.put()
-        
-        self.chennai = City(name= 'Chennai', url = 'chennai')
-        self.chennai.put()
+        self.make_test_data()
       
     def tearDown(self):
         users.get_current_user = self.temp_gcu
@@ -30,3 +25,9 @@ class ExtendedTestCase(unittest.TestCase):
 
     def logout(self):
         self.login(None)
+
+    def make_test_data(self):
+        self.evam = Company(name='Evam Theatre Company', url='evam')
+        self.evam.put()
+        self.chennai = City(name='Chennai', url='chennai')
+        self.chennai.put()

@@ -9,7 +9,8 @@
         {% for venue in city.venues %}
         <form action="/_admin/venue" method="POST">
             <p>
-                {{ venue.name }}<input type="submit" value="Delete?">
+                {{ venue.name }} ({{venue.url}})
+				<input type="submit" value="Delete?">
             </p><input type="hidden" value="{{venue.key}}" name="key"/><input type="hidden" value="delete" name="action">
         </form>{% endfor %}
     </div>{% endfor %}
@@ -17,14 +18,13 @@
 <div>
     <h3>Create a new Venue</h3>
     <form action="/_admin/venue" method="POST">
+        <input type="hidden" value="create" name="action"/>
         <div>
             <select name = "city">
                 {% for city in cities %}<option value = "{{city.url}}">{{city.name}}</option>
                 {% endfor %}
             </select>
-            <input type="text" name="name"/>
-			<input type="text" name ="url"/>
-			<input type="submit"/>
+            <input type="text" name="name"/><input type="text" name ="url"/><input type="submit" value="Create"/>
         </div>
     </form>
 </div>{% endblock %}

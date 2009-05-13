@@ -6,7 +6,7 @@ from models.venue import Venue
 
 class VenueHandler(base.CrudHandler):
   def get(self):
-    self.render('admin/show.html', dict(cities = City.all()))
+    self.render('admin/venue.html', dict(cities = City.all()))
   
   def create(self):
     city = City.get_by_url(self.read('city'))

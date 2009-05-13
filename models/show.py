@@ -9,6 +9,6 @@ class Show(base.NamedEntity):
     def put(self):
         if (not self.is_saved()) and self.company.get_show_by_url(self.url):
             raise ValueError("This URL is being used for another show by "+self.company.name)
-        super(base.NamedEntity, self).put()
+        super(Show, self).put()
         
   
