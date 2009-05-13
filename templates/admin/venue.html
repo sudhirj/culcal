@@ -2,22 +2,29 @@
 {% block content %}
 {% if cities %}
 <div>
-	<h3>Existing Cities</h3>
-	{% for city in cities %}
-	<form action="/_admin/city" method="POST">
-		<p>{{ city.name }}
-			<input type="submit" value="Delete?">
-		</p>
-		<input type="hidden" value="{{city.key}}" name="key"/>
-		<input type="hidden" value="delete" name="action">
-	</form>
-	{% endfor %}
-</div>
-{% endif %}
+    <h3>Existing Venues in City</h3>
+    {% for city in cities %}
+    <div>
+        <h3>{{city.name}}</h3>
+        {% for venue in city.venues %}
+        <form action="/_admin/venue" method="POST">
+            <p>
+                {{ venue.name }}<input type="submit" value="Delete?">
+            </p><input type="hidden" value="{{venue.key}}" name="key"/><input type="hidden" value="delete" name="action">
+        </form>{% endfor %}
+    </div>{% endfor %}
+</div>{% endif %}
 <div>
-	<h3>Create a new City</h3>
-	<form action="/_admin/city" method="POST">
-		<div><input type="text" name="name"/><input type="submit"/></div>
-	</form>
-</div>	
-{% endblock %}
+    <h3>Create a new Venue</h3>
+    <form action="/_admin/venue" method="POST">
+        <div>
+            <select name = "city">
+                {% for city in cities %}<option value = "{{city.url}}">{{city.name}}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name="name"/>
+			<input type="text" name ="url"/>
+			<input type="submit"/>
+        </div>
+    </form>
+</div>{% endblock %}
