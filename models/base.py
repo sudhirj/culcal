@@ -7,6 +7,12 @@ import validators
 class Entity(db.Model):
     created_at = db.DateTimeProperty(auto_now_add=True)
     updated_at = db.DateTimeProperty(auto_now=True)
+    
+    @staticmethod
+    def _get_attribute_by_value(attribute, filter_property, value):
+        matches = attribute.filter(filter_property + ' =', value).fetch(1)
+        return matches[0] if len(matches) else None
+        
   
 class NamedEntity(Entity):
   
@@ -14,6 +20,8 @@ class NamedEntity(Entity):
         if string == None or string.isspace() : raise ValueError("Name can't be blank")
 
     name = db.StringProperty(required=True, validator=validate_name)
+    
+    
   
 class UrlBasedEntity(NamedEntity):
   
@@ -21,9 +29,7 @@ class UrlBasedEntity(NamedEntity):
   
     @classmethod
     def get_by_url(cls, url):
-        matches = cls.all().filter('url =', url).fetch(1)  
-        return matches[0] if len(matches) else None
-    
+        return cls._get_attribute_by_value(cls.all(), 'url', url)
   
     def put(self):
         if (not self.is_saved()) and self.get_by_url(self.url):

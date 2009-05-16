@@ -8,8 +8,7 @@ class City(base.UrlBasedEntity):
     minutes_offset = db.IntegerProperty(default=0)
     
     def get_venue_by_url(self, venue_url):
-        matches = self.venues.filter('url =', venue_url).fetch(1)
-        return matches[0] if len(matches) else None
+        return self._get_attribute_by_value(self.venues, 'url', venue_url)
 
     def get_tzinfo(self):
         return timedelta(hours=self.hours_offset, minutes=self.minutes_offset)
