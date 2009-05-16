@@ -6,10 +6,13 @@ from models.city import City
 
 class CityHandler(base.CrudHandler):
   def get(self):
-    self.render("admin/city.html", dict(cities = City.all()))
+    self.render("admin/city.html", dict(cities=City.all()))
   
   def create(self):
-    City(name = self.read('name'), url = self.read('url')).put()
+    City(name=self.read('name'),
+         url=self.read('url'),
+         hours_offset=int(self.read('hours')),
+         minutes_offset=int(self.read('minutes'))).put()
     self.get()
 
   def delete(self):

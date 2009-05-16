@@ -1,3 +1,4 @@
+from datetime import timedelta, tzinfo
 from google.appengine.ext import db
 import re
 import settings
@@ -29,5 +30,18 @@ class UrlBasedEntity(NamedEntity):
             raise ValueError("This URL is already in use.")
         super(NamedEntity, self).put()
 
+
+class FixedOffset(tzinfo):
+    def __init__(self, hours=0, minutes=0):
+        self.__offset = timedelta(hours=hours, minutes=minutes)
+
+    def utcoffset(self, dt):
+        return self.__offset
+
+    def tzname(self, dt):
+        return "FixedOffset:" + self._offset 
+
+    def dst(self, dt):
+        return ZERO
       
       
