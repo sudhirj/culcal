@@ -1,7 +1,9 @@
 from google.appengine.api import users
-import unittest
-from models.company import Company
 from models.city import City
+from models.company import Company
+from models.show import Show
+from models.venue import Venue
+import unittest
 
 class ExtendedTestCase(unittest.TestCase): 
     def random(self, salt=1):
@@ -29,5 +31,9 @@ class ExtendedTestCase(unittest.TestCase):
     def make_test_data(self):
         self.evam = Company(name='Evam Theatre Company', url='evam')
         self.evam.put()
+        self.hamlet = Show(name='Hamlet', url='hamlet', company=self.evam)
+        self.hamlet.put()
         self.chennai = City(name='Chennai', url='chennai')
         self.chennai.put()
+        self.lady_andal = Venue(name='Lady Andal', url='lady_andal', city=self.chennai)
+        self.lady_andal.put()

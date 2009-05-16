@@ -20,7 +20,7 @@ class PerformanceHandler(base.CrudHandler):
     minute = int(self.read('minute'))
     Performance(show = show,
                 venue = venue,
-                date_time = datetime.datetime(year, month, day, hour, minute)
+                utc_date_time = datetime.datetime(year, month, day, hour, minute) - venue.city.get_timedelta()
                 ).put()
     self.get()
   

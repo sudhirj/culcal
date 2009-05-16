@@ -3,6 +3,7 @@ from google.appengine.ext.db import *
 from models.city import City
 from models.venue import Venue
 import extendedtestcase
+from models.base import FixedOffset
 
 class CityTests(extendedtestcase.ExtendedTestCase):
     def test_city_creation_with_duplicate_urls_fails(self):
@@ -27,9 +28,7 @@ class CityTests(extendedtestcase.ExtendedTestCase):
     def test_get_tzinfo(self):
         self.chennai.hours_offset = 4
         self.chennai.minutes_offset = 45
-        self.assertEquals(timedelta(hours=4, minutes=45), self.chennai.get_tzinfo())
+        self.assertEquals(timedelta(hours=4, minutes=45), self.chennai.get_timedelta())
         
-        self.chennai.hours_offset = -4
-        self.chennai.minutes_offset = -55
-        self.assertEquals(timedelta(hours=-4, minutes=-55), self.chennai.get_tzinfo())
+       
         

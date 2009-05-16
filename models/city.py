@@ -10,5 +10,5 @@ class City(base.UrlBasedEntity):
     def get_venue_by_url(self, venue_url):
         return self._get_attribute_by_value(self.venues, 'url', venue_url)
 
-    def get_tzinfo(self):
+    def get_timedelta(self):
         return timedelta(hours=self.hours_offset, minutes=self.minutes_offset)

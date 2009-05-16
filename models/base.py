@@ -38,8 +38,8 @@ class UrlBasedEntity(NamedEntity):
 
 
 class FixedOffset(tzinfo):
-    def __init__(self, hours=0, minutes=0):
-        self.__offset = timedelta(hours=hours, minutes=minutes)
+    def __init__(self, offset):
+        self.__offset = offset
 
     def utcoffset(self, dt):
         return self.__offset
@@ -49,5 +49,8 @@ class FixedOffset(tzinfo):
 
     def dst(self, dt):
         return None
+    
+    def __eq__(self, other):
+        return self.__offset == other.__offset
       
       

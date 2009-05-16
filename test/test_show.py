@@ -1,6 +1,6 @@
 from google.appengine.ext.db import *
-from models.show import Show
 from models.company import Company
+from models.show import Show
 import extendedtestcase
 
 class ShowTests(extendedtestcase.ExtendedTestCase):
@@ -8,8 +8,9 @@ class ShowTests(extendedtestcase.ExtendedTestCase):
         self.assertRaises(BadValueError, Show, None)
     
     def test_show_creation_with_duplicate_url(self):
-        hamlet = Show(company=self.evam, name="Hamlet spoof", url='hamlet')
+        url = self.random()
+        hamlet = Show(company=self.evam, name="Hamlet spoof", url=url)
         hamlet.put()
         
-        same_url_try = Show(company=self.evam, name="Hamlet other url try", url='hamlet')
+        same_url_try = Show(company=self.evam, name="Hamlet other url try", url=url)
         self.assertRaises(ValueError, same_url_try.put)        

@@ -6,6 +6,7 @@ import extendedtestcase
 class CompanyTests(extendedtestcase.ExtendedTestCase):
     
     def test_get_show_by_url(self):
-        hamlet = Show(company=self.evam, name="ASLFJALIEHR3408asdTRSDF", url='hamlet')
+        url = self.random()
+        hamlet = Show(company=self.evam, name=self.random(2), url=url)
         hamlet.put()
-        self.assertEqual(hamlet.name, self.evam.get_show_by_url('hamlet').name)
+        self.assertEqual(hamlet.name, self.evam.get_show_by_url(url).name)
