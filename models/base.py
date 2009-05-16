@@ -48,6 +48,6 @@ class FixedOffset(tzinfo):
         return "FixedOffset:" + self._offset 
 
     def dst(self, dt):
-        return ZERO
+        return None
       
       
