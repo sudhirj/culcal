@@ -15,7 +15,7 @@ class Entity(db.Model):
         
   
 class NamedEntity(Entity):
-  
+
     def validate_name(string):
         if string == None or string.isspace() : raise ValueError("Name can't be blank")
 
@@ -34,7 +34,7 @@ class UrlBasedEntity(NamedEntity):
     def put(self):
         if (not self.is_saved()) and self.get_by_url(self.url):
             raise ValueError("This URL is already in use.")
-        super(NamedEntity, self).put()
+        super(UrlBasedEntity, self).put()
 
 
 class FixedOffset(tzinfo):
