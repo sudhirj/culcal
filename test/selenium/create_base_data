@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>create_base_data</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">create_base_data</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/_admin/city</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name</td>
+	<td>Chennai</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>url</td>
+	<td>chennai</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hours</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>minutes</td>
+	<td>30</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Venue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name</td>
+	<td>Lady Andal</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>url</td>
+	<td>la</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Company</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name</td>
+	<td>Evam India</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>url</td>
+	<td>ev</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Show</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name</td>
+	<td>Hamlet</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>url</td>
+	<td>ham</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Create']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Performance</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>year</td>
+	<td>2009</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>month</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>day</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>hour</td>
+	<td>17</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>minute</td>
+	<td>45</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@type='submit']</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

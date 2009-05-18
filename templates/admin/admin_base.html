@@ -1,28 +1,28 @@
-<!DOCTYPE html >
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta http-equiv="Content-Language" content="en-us" />
-
-	<title>What's Going On : Admin</title>
-
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="MSSmartTagsPreventParsing" content="true" />
-	<meta name="Copyright" content="This site's design and contents Copyright (c) 2009 Sudhir Jonathan." />
-
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-</head>
-<body>
-	<h2>Admin</h2>
-	<ul>
-		<li><a href="city">City</a></li>
-		<li><a href="venue">Venue</a></li>
-		<li><a href="company">Company</a></li>
-		<li><a href="show">Show</a></li>
-		<li><a href="performance">Performance</a></li>
-	</ul>
-	{% block content %}
-	{% endblock %}
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>What's Going On : Admin</title>
+    </head>
+    <body>
+        <h2>Admin</h2>
+        <ul>
+            <li>
+                <a href="city">City</a>
+            </li>
+            <li>
+                <a href="venue">Venue</a>
+            </li>
+            <li>
+                <a href="company">Company</a>
+            </li>
+            <li>
+                <a href="show">Show</a>
+            </li>
+            <li>
+                <a href="performance">Performance</a>
+            </li>
+        </ul>
+        {% block content %}
+        {% endblock %}
+    </body>
 </html>

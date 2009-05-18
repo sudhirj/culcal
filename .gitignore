@@ -4,3 +4,5 @@ tmtags
 .project
 .pydevproject
 *.tmp_*
+google_appengine
+#.*#

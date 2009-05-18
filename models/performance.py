@@ -1,12 +1,15 @@
 from google.appengine.ext import db
 from show import Show
 from venue import Venue
-import base
+from city import City
+import base, datetime
 
 class Performance(base.Entity):
     show = db.ReferenceProperty(Show, collection_name='performances', required=True)
     utc_date_time = db.DateTimeProperty(required=True)
-    venue = db.ReferenceProperty(Venue, collection_name='shows', required=True)
+    venue = db.ReferenceProperty(Venue, collection_name='performances', required=True)
+    
+    cached_city = db.ReferenceProperty(City, collection_name = 'cached_performances', required = False)
     
     def get_local_time(self):
         return self.utc_date_time + self.venue.city.get_timedelta()
@@ -14,5 +17,8 @@ class Performance(base.Entity):
     def set_local_time(self, date_time):
         self.utc_date_time = date_time - self.venue.city.get_timedelta()
         
+    def put(self):
+        self.cached_city = self.venue.city
+        return super(Performance, self).put()
    
   

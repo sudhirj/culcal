@@ -20,6 +20,12 @@ class PerformanceModelTests(extendedtestcase.ExtendedTestCase):
         self.assertEqual(now, perf.utc_date_time)
         self.assertEqual(now + self.chennai.get_timedelta(), perf.get_local_time())
     
+    def test_cache(self):
+        now = datetime.datetime.now()
+        perf = Performance(show = self.hamlet, venue = self.lady_andal, utc_date_time = now)
+        perf.put()
+        self.assertEqual(self.chennai, perf.cached_city)
+    
         
         
         
