@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import wsgiref.handlers, settings, logging
 from google.appengine.ext import webapp
 from handlers.admin import cityhandler, companyhandler, showhandler, venuehandler, performancehandler

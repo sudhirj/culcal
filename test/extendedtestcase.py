@@ -13,7 +13,6 @@ class ExtendedTestCase(unittest.TestCase):
     def setUp(self):
         self.temp_gcu = users.get_current_user
         self.temp_icua = users.is_current_user_admin
-        
         self.make_test_data()
       
     def tearDown(self):

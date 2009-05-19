@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 from google.appengine.ext import webapp
 import settings
 import wsgiref.handlers

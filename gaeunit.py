@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.5
+
 '''
 GAEUnit: Google App Engine Unit Test Framework
 
