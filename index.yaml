@@ -17,7 +17,7 @@ indexes:
   - name: cached_city
   - name: utc_date_time
 
-# Unused in query history -- copied from input.
+# Used 4 times in query history.
 - kind: Performance
   properties:
   - name: cached_city

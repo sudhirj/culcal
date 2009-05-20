@@ -30,7 +30,7 @@ class UrlBasedEntity(NamedEntity):
     @classmethod
     def get_by_url(cls, url):
         return cls._get_attribute_by_value(cls.all(), 'url', url)
-  
+    
     def put(self):
         if (not self.is_saved()) and self.get_by_url(self.url):
             raise ValueError("This URL is already in use.")

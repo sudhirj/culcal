@@ -2,6 +2,7 @@ from datetime import timedelta
 from google.appengine.ext.db import *
 from models.city import City
 from models.venue import Venue
+from models.performance import Performance
 import extendedtestcase
 from models.base import FixedOffset
 
@@ -29,6 +30,19 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.chennai.hours_offset = 4
         self.chennai.minutes_offset = 45
         self.assertEquals(timedelta(hours=4, minutes=45), self.chennai.get_timedelta())
+        
+    def test_get_performances_from_time(self):
+        Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=self.one_day_later).put()
+        Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=self.three_days_later).put()
+        num_matches = self.chennai.get_performances_from_time(self.two_days_later).count()
+        self.assertEqual(1, num_matches)
+        
+        num_matches = self.chennai.get_performances_from_time(self.now).count()
+        self.assertEqual(2, num_matches)
+        
+        
+        
+        
         
        
         

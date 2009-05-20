@@ -12,3 +12,6 @@ class City(base.UrlBasedEntity):
 
     def get_timedelta(self):
         return timedelta(hours=self.hours_offset, minutes=self.minutes_offset)
+    
+    def get_performances_from_time(self, dt):
+        return self.cached_performances.filter('utc_date_time >', dt).order('utc_date_time')

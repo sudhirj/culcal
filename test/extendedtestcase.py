@@ -3,7 +3,7 @@ from models.city import City
 from models.company import Company
 from models.show import Show
 from models.venue import Venue
-import unittest
+import unittest, datetime
 
 class ExtendedTestCase(unittest.TestCase): 
     def random(self, salt=1):
@@ -28,6 +28,11 @@ class ExtendedTestCase(unittest.TestCase):
         self.login(None)
 
     def make_test_data(self):
+        self.now = datetime.datetime.now()
+        self.one_day_later = self.now + datetime.timedelta(days=1)
+        self.two_days_later = self.now + datetime.timedelta(days=2)
+        self.three_days_later = self.now + datetime.timedelta(days=3)
+        
         self.evam = Company(name='Evam Theatre Company', url='evam')
         self.evam.put()
         self.hamlet = Show(name='Hamlet', url='hamlet', company=self.evam)

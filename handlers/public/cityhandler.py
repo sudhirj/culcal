@@ -9,7 +9,7 @@ class CityHandler(base.CrudHandler):
         if not city: 
             self.redirect('/', False)
             return
-        performances = city.cached_performances.filter('utc_date_time >', datetime.datetime.now()).order('utc_date_time').fetch(50)
+        performances = city.get_performances_from_time(datetime.datetime.now()).fetch(50)
         self.render("public/city.html", dict(city=city, performances=performances))
   
  
