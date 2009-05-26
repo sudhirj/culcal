@@ -25,10 +25,12 @@ class CustomHandler(webapp.RequestHandler):
     def read(self, name):
         return cgi.escape(self.request.get(name))
     
-    def is_delete_request(self):
-        return self.read('action') == 'delete'
+    
     
 class CrudHandler(CustomHandler):
+    def is_delete_request(self):
+        return self.read('action') == 'delete'
+        
     def post(self):
         action = self.read('action')
         if not action: return False

@@ -1,9 +1,10 @@
-import wsgiref.handlers, settings, logging
+import wsgiref.handlers, settings, logging, re
 from google.appengine.ext import webapp
-from handlers.public.cityhandler import CityHandler
+from handlers.public.cityhandler import CityHandler, CompanyHandler
 
 ROUTES = [
-  ('/([\w-]+)', CityHandler)
+    ('/('+'|'.join(settings.COMPANY_URLS)+')/([\w-]+)',CompanyHandler),
+    (r'/([\w-]+)', CityHandler)
 ]
 
 def main():

@@ -3,6 +3,7 @@ from models.city import City
 from models.company import Company
 from models.show import Show
 from models.venue import Venue
+from models.performance import Performance
 import unittest, datetime
 
 class ExtendedTestCase(unittest.TestCase): 
@@ -41,3 +42,8 @@ class ExtendedTestCase(unittest.TestCase):
         self.chennai.put()
         self.lady_andal = Venue(name='Lady Andal', url='lady_andal', city=self.chennai)
         self.lady_andal.put()
+        
+    def make_performance(self, show, venue, dt):
+        perf = Performance(show = show, venue = venue, utc_date_time = dt)
+        perf.put()
+        return perf

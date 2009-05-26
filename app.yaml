@@ -12,8 +12,5 @@ handlers:
   script: handlers/admin/main.py
   login: admin
   
-- url: /([\w-]+)
-  script: handlers/public/main.py
-  
 - url: /.*
-  script: main.py
+  script: handlers/public/main.py
