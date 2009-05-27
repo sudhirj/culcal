@@ -9,7 +9,7 @@ class CompanyHandler(base.CrudHandler):
     self.render('admin/company.html', dict(companies = Company.all()))
 
   def create(self):
-    Company(name = self.read('name'), url = self.read('url')).put()
+    Company(name = self.read('name'), url = self.read('url'), description = self.read('description')).put()
     self.get()
     
   def delete(self):
