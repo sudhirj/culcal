@@ -13,13 +13,13 @@ class CompanyTests(extendedtestcase.ExtendedTestCase):
     
     def test_get_new_performances(self):
         perf = self.make_performance(self.hamlet, self.lady_andal, self.one_day_later)
-        perfs_from_db =self.evam.get_new_performances().fetch(100)
+        perfs_from_db = self.evam.get_new_performances().fetch(100)
         self.assertEqual(1, len(perfs_from_db))
         self.assertEqual(perf, perfs_from_db[0])
     
     def test_attempt_to_create_company_with_same_name_as_city(self):
-        attempted_company = Company(name ='Chennai', url = 'chennai')
-        self.assertRaises(ValueError,attempted_company.put)
+        attempted_company = Company(name='Chennai', url='chennai')
+        self.assertRaises(ValueError, attempted_company.put)
         
         
         

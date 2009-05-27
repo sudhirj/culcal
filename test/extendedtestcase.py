@@ -44,6 +44,6 @@ class ExtendedTestCase(unittest.TestCase):
         self.lady_andal.put()
         
     def make_performance(self, show, venue, dt):
-        perf = Performance(show = show, venue = venue, utc_date_time = dt)
+        perf = Performance(show=show, venue=venue, utc_date_time=dt)
         perf.put()
         return perf
