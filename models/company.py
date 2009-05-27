@@ -1,7 +1,10 @@
 import base, datetime
 from models.city import City
+from google.appengine.ext import db
 
 class Company(base.UrlBasedEntity):
+    description = db.TextProperty(required = False, default = "")
+    
     def get_show_by_url(self, show_url):
         return self._get_attribute_by_value(self.shows, 'url', show_url)
     

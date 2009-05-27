@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}{{company.name|capfirst}}{%endblock%}
-{% block heading%}{{company.name|capfirst}}{%endblock%}
+{% block heading%}{{company.url|capfirst}}{%endblock%}
 {% block content%}
-<div>
-	
+<div class="description">{{company.description}}</div>
+<div class="performances">
 </div>
 {%endblock%}
