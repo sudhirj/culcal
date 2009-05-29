@@ -31,7 +31,7 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.chennai.minutes_offset = 45
         self.assertEquals(timedelta(hours=4, minutes=45), self.chennai.get_timedelta())
         
-    def test_get_new_performances(self):
+    def test_get_performances_from_time(self):
         Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=self.one_day_later).put()
         Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=self.three_days_later).put()
         num_matches = self.chennai.get_performances_from_time(self.two_days_later).count()

@@ -17,13 +17,13 @@ indexes:
   - name: cached_city
   - name: utc_date_time
 
-# Used once in query history.
+# Used 3 times in query history.
 - kind: Performance
   properties:
   - name: cached_city
   - name: utc_date_time
 
-# Used 6 times in query history.
+# Used 4 times in query history.
 - kind: Performance
   properties:
   - name: cached_company
