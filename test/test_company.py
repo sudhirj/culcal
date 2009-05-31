@@ -1,8 +1,8 @@
+from datetime import timedelta
 from google.appengine.ext.db import *
 from models.company import Company
 from models.show import Show
 import extendedtestcase
-from datetime import timedelta
 
 class CompanyTests(extendedtestcase.ExtendedTestCase):
     

@@ -1,7 +1,9 @@
-import wsgiref.handlers, utils, cgi, traceback, sys
-
 from google.appengine.ext import webapp
-
+import cgi
+import sys
+import traceback
+import utils
+import wsgiref.handlers
 
 class CustomHandler(webapp.RequestHandler):
    
@@ -24,7 +26,6 @@ class CustomHandler(webapp.RequestHandler):
     
     def read(self, name):
         return cgi.escape(self.request.get(name))
-    
     
     
 class CrudHandler(CustomHandler):
