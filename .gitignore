@@ -6,3 +6,4 @@ tmtags
 *.tmp_*
 google_appengine
 #.*#
+index.yaml
