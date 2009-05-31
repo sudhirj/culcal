@@ -22,6 +22,20 @@ class CompanyHandler(base.CrudHandler):
             return 
         performances = company.get_new_performances().fetch(50)
         self.render('public/company.html',dict(company = company, performances = performances))
+
+class VenueHandler(base.CrudHandler):
+    def get(self, city_url, venue_url):
+        city = City.get_by_url(city_url) 
+        if city:
+            venue = City.get_venue_by_url(venue_url)
+        if not city or not venue:
+            self.redirect('/',False)
+            return
+        performances = venue.get_new_performances().fetch(50)
+        
+        
+            
+            
         
         
 
