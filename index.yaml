@@ -10,14 +10,4 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
-# Used 2 times in query history.
-- kind: Performance
-  properties:
-  - name: cached_city
-  - name: utc_date_time
 
-# Used 3 times in query history.
-- kind: Performance
-  properties:
-  - name: cached_company
-  - name: utc_date_time

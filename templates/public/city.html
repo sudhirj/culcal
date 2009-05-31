@@ -3,14 +3,6 @@
 {% block heading%}{{city.name|capfirst}}{%endblock%}
 {% block content%}
 <div>
-	{% regroup performances|dictsort:"utc_date_time" by get_local_time.date as date_grouped %}
-	{% for group in date_grouped %}
-	<h4>{{group.grouper|date:"l, d\<\s\u\p\>S\<\/\s\u\p\> F Y"}}</h4>
-	{% for performance in group.list %}
-	<p>
-		{{performance.get_local_time.time|time:"P"}} - {{performance.show.name}} by {{performance.show.company.name}} at {{performance.venue.name}}
-	</p>
-	{% endfor %}
-	{% endfor %}
+{% include "performances.html" %}
 </div>
 {%endblock%}
