@@ -12,3 +12,7 @@ class VenueTests(extendedtestcase.ExtendedTestCase):
         venue_with_duplicate_url = Venue(city=self.chennai, name=self.random(3), url=url)
         self.assertRaises(ValueError, venue_with_duplicate_url.put)    
          
+    def test_perf_mixin_inherit(self):
+        from models.mixins import HasPerformances
+        self.assertTrue(issubclass(Venue, HasPerformances))
+        self.assertTrue(hasattr(self.lady_andal, 'performances'))

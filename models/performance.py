@@ -28,4 +28,3 @@ class Performance(base.Entity):
         if self.is_saved(): return self.key()==other.key()
         raise Error('Not Implemented')
    
-  

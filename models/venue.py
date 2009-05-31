@@ -1,8 +1,9 @@
 from google.appengine.ext import db
 from models.city import City
 import base, validators
+from models.mixins import HasPerformances
 
-class Venue(base.NamedEntity):
+class Venue(base.NamedEntity, HasPerformances):
     city = db.ReferenceProperty(City, collection_name='venues')
     url = db.StringProperty(required=True, validator=validators.validate_url)
     

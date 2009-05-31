@@ -25,6 +25,8 @@ class PerformanceModelTests(extendedtestcase.ExtendedTestCase):
         perf = Performance(show = self.hamlet, venue = self.lady_andal, utc_date_time = now)
         perf.put()
         self.assertEqual(self.chennai, perf.cached_city)
+        self.assertEqual(self.evam, perf.cached_company)
+        
     
         
         
