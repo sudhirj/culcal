@@ -1,8 +1,9 @@
 from google.appengine.ext import db
 from company import Company
 import base, validators
+from models.mixins import HasPerformances
 
-class Show(base.NamedEntity):
+class Show(base.NamedEntity, HasPerformances):
     company = db.ReferenceProperty(Company,collection_name='shows', required = True)
     url = db.StringProperty(required = True, validator = validators.validate_url)
     
