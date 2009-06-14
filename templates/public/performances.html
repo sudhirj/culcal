@@ -2,7 +2,17 @@
 {% for group in date_grouped %}<h4>{{group.grouper|date:"l, d\<\s\u\p\>S\<\/\s\u\p\> F Y"}}</h4>
 {% for performance in group.list %}
 <p>
-    {{performance.get_local_time.time|time:"P"}} - {{performance.show.name}} by {{performance.show.company.name}} at {{performance.venue.name}}
+    {{performance.get_local_time.time|time:"P"}} - 
+	{{performance.show.name}} 
+	{% if not company %}
+	by {{performance.cached_company.name}}
+	{% endif %}
+	{% if not venue %} 
+	at {{performance.venue.name}}
+	{% endif %} 
+	{% if not city and not venue%}
+	in {{performance.cached_city.name}}
+	{% endif %}
 </p>
 {% endfor %}
 {% endfor %}

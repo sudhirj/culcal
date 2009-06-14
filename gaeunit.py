@@ -421,10 +421,7 @@ _MAIN_PAGE_CONTENT = """
     <title>GAEUnit: Google App Engine Unit Test Framework</title>
 </head>
 <body onload="runTests()">
-    <div id="headerarea">
-        <div id="title">GAEUnit: Google App Engine Unit Test Framework</div>
-        <div id="version">Version %s</div>
-    </div>
+    <div id="version">Version %s</div>
     <div id="resultarea">
         <table id="results"><tbody>
             <tr><td colspan="3"><div id="testindicator"> </div></td</tr>
