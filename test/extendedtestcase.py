@@ -4,12 +4,12 @@ from models.company import Company
 from models.show import Show
 from models.venue import Venue
 from models.performance import Performance
-import unittest, datetime
+import unittest, datetime, random
 
 class ExtendedTestCase(unittest.TestCase): 
-    def random(self, salt=1):
+    def random(self):
         import hashlib, time
-        return hashlib.md5((time.clock()*salt).__str__()).hexdigest()
+        return hashlib.md5((time.clock()*random.random()).__str__()).hexdigest()
     
     def setUp(self):
         self.temp_gcu = users.get_current_user
@@ -19,6 +19,10 @@ class ExtendedTestCase(unittest.TestCase):
     def tearDown(self):
         users.get_current_user = self.temp_gcu
         users.is_current_user_admin = self.temp_icua
+        
+        for model in [City, Company, Performance, Show, Venue]:
+            for datum in model.all():
+                datum.delete()
 
     def login(self, user="sudhir.j@gmail.com", admin=True):
         users.get_current_user = lambda user = user : users.User(user) if user else None

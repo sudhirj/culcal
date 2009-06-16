@@ -24,7 +24,7 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         venue.put()
         self.assertEqual(venue.name, self.chennai.get_venue_by_url(venue.url).name)
         
-        self.assertEqual(None, self.chennai.get_venue_by_url(self.random(2)))
+        self.assertEqual(None, self.chennai.get_venue_by_url(self.random()))
                 
     def test_get_tzinfo(self):
         self.chennai.hours_offset = 4
