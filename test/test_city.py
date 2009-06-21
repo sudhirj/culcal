@@ -1,10 +1,10 @@
 from datetime import timedelta
 from google.appengine.ext.db import *
-from models.city import City
-from models.venue import Venue
-from models.performance import Performance
-import extendedtestcase
 from models.base import FixedOffset
+from models.city import City
+from models.performance import Performance
+from models.venue import Venue
+import extendedtestcase
 
 class CityTests(extendedtestcase.ExtendedTestCase):
     def test_city_creation_with_duplicate_urls_fails(self):
@@ -16,8 +16,7 @@ class CityTests(extendedtestcase.ExtendedTestCase):
 
     def test_basic_validations(self):
         self.assertRaises(BadValueError, City, name="city 1")
-        # check bad url
-        self.assertRaises(ValueError, City, name="chennai", url="chennai city")
+        self.assertRaises(ValueError, City, name="chennai", url="chennai city") # check bad url
     
     def test_get_venue_by_url(self):
         venue = Venue(city=self.chennai, name=self.random(), url=self.random())
@@ -39,6 +38,26 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         
         num_matches = self.chennai.get_performances_from_time(self.now).count()
         self.assertEqual(2, num_matches)
+    
+    def test_city_creation(self):
+        city_route = '/_admin/city'
+        self.admin_app.post(city_route, {'action':'create'}, status=403) # tells blank posts to bugger off 
+        name = self.random()
+        url = self.random()
+        
+        city_data = dict(action='create', name=name, url=url, hours=5, minutes=43)
+        self.admin_app.post(city_route, city_data)
+        self.admin_app.post(city_route, city_data, status=403) # create the city only once
+        
+        city = City.get_by_url(url)
+        self.assertTrue(city)
+        self.assertEqual(name, city.name)
+        self.assertEqual(url, city.url)
+        
+        
+        
+        
+        
         
         
         

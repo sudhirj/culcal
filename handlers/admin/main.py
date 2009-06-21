@@ -12,9 +12,10 @@ ROUTES = [
 ]
 
 def main():
-  application = webapp.WSGIApplication(ROUTES, settings.DEBUG)
-  wsgiref.handlers.CGIHandler().run(application)
+  wsgiref.handlers.CGIHandler().run(createApp())
 
+def createApp():
+    return webapp.WSGIApplication(ROUTES, settings.DEBUG)
 
 if __name__ == '__main__':
   main()

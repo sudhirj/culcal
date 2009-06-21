@@ -3,6 +3,7 @@ from models.venue import Venue
 from models.city import City
 import extendedtestcase, logging
 
+
 class VenueTests(extendedtestcase.ExtendedTestCase):
       
     def test_venue_creation_with_duplicate_url(self):

@@ -1,20 +1,23 @@
 from google.appengine.ext import webapp
-from handlers.public.allhandlers import CityHandler, CompanyHandler, VenueHandler, ShowHandler
+from handlers.public.allhandlers import VenueHandler, ShowHandler, CommonHandler
 import logging
 import re
 import settings
 import wsgiref.handlers
 
 ROUTES = [
-    ('/(' + '|'.join(settings.COMPANY_URLS) + ')/([\w-]+)/shows/([\w-]+)/*.*', ShowHandler),
-    ('/(' + '|'.join(settings.COMPANY_URLS) + ')/([\w-]+)/*.*', CompanyHandler),
+    ('/([\w-]+)/shows/([\w-]+)/*.*', ShowHandler),
+#    ('/(' + '|'.join(settings.COMPANY_URLS) + ')/([\w-]+)/*.*', CompanyHandler),
     (r'/([\w-]+)/venues/([\w-]+)/*.*', VenueHandler),
-    (r'/([\w-]+)/*.*', CityHandler)
+    (r'/([\w-]+)/*.*',  CommonHandler)
 ]
 
 def main():
-    application = webapp.WSGIApplication(ROUTES, settings.DEBUG)
-    wsgiref.handlers.CGIHandler().run(application)
+    wsgiref.handlers.CGIHandler().run(createApp())
+    
+def createApp():
+    return webapp.WSGIApplication(ROUTES, settings.DEBUG)
+    
 
 if __name__ == '__main__':
     main()
