@@ -1,3 +1,5 @@
+from google.appengine.dist import use_library
+use_library('django', '1.0')
 import wsgiref.handlers, settings, logging
 from google.appengine.ext import webapp
 from handlers.admin import cityhandler, companyhandler, showhandler, venuehandler, performancehandler
