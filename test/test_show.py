@@ -18,4 +18,4 @@ class ShowTests(extendedtestcase.ExtendedTestCase):
     def test_get_route(self):
         url = self.random()
         hamlet = Show(company=self.evam, name="Hamlet spoof", url=url)
-        self.assertEqual('/'+self.evam.url+'/shows/'+hamlet.url,hamlet.get_route())
+        self.assertEqual('/' + self.evam.url + '/shows/' + hamlet.url, hamlet.get_route())

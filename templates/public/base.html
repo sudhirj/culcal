@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>What's Going On : {% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        <h1>WhatsGoingOn.In/{% block heading %}{%endblock%}</h1>
-        {% block content %}
-        {% endblock %}
-    </body>
+<head>
+	<title>What's Going On : {% block title %}{% endblock %}</title>
+</head>
+<body>
+	<h1>{% block heading %}{%endblock%}</h1>
+	{% block content %}{% endblock %}
+</body>
 </html>

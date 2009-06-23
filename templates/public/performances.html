@@ -2,9 +2,9 @@
 {% for group in date_grouped %}<h4>{{group.grouper|date:"l, d\<\s\u\p\>S\<\/\s\u\p\> F Y"|safe}}</h4>
 {% for performance in group.list %}
 <p>
-    {{performance.get_local_time.time|time:"P"}} - 
+    {{performance.get_local_time.time|time:"P"}} 
 	{% if not show %}
-	<a href="{{performance.show.get_route}}">{{performance.show.name}}</a> 
+	 - <a href="{{performance.show.get_route}}">{{performance.show.name}}</a> 
 	{% endif %}
 	{% if not company and not show%}
 	by <a href="{{performance.cached_company.get_route}}">{{performance.cached_company.name}}</a>

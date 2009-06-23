@@ -1,8 +1,10 @@
-import wsgiref.handlers, settings, datetime
 from handlers import base
 from models.city import City
-from models.performance import Performance
 from models.company import Company
+from models.performance import Performance
+import datetime
+import settings
+import wsgiref.handlers
 
 class CommonHandler(base.CrudHandler):
     def get(self, url):
