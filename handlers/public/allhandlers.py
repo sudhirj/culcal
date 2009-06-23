@@ -9,21 +9,22 @@ import wsgiref.handlers
 class CommonHandler(base.CrudHandler):
     def get(self, url):
         city = City.get_by_url(url)
-        if city: 
-            performances = city.get_new_performances().fetch(50)
-            self.render('public/city.html', dict(city=city, performances=performances))
-            return
-        
-        company = Company.get_by_url(url)
-        if company:
-            performances = company.get_new_performances().fetch(50)
-            self.render('public/company.html', dict(company=company, performances=performances))
-            return
+        if not city: company = Company.get_by_url(url)
         
         if not city and not company:
             self.redirect('/', False)
+            return
         
-
+        data_type = 'city' if city else 'company'
+        data = city or company
+        performances = data.get_new_performances().fetch(50)
+        render_data = dict(performances = performances)
+        render_data[data_type] = data 
+        
+        self.render('public/'+data_type+'.html', render_data)
+        
+       
+      
 class VenueHandler(base.CrudHandler):
     def get(self, city_url, venue_url):
         city = City.get_by_url(city_url) 
