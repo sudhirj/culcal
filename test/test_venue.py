@@ -17,3 +17,8 @@ class VenueTests(extendedtestcase.ExtendedTestCase):
         from models.mixins import HasPerformances
         self.assertTrue(issubclass(Venue, HasPerformances))
         self.assertTrue(hasattr(self.lady_andal, 'performances'))
+        
+    def test_get_route(self):
+        url = self.random();
+        venue = Venue(name=self.random(), url=url, city=self.chennai)
+        self.assertEqual('/'+self.chennai.url+'/venues/'+venue.url,venue.get_route())

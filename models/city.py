@@ -3,7 +3,6 @@ from google.appengine.ext import db
 import base
 from models.mixins import HasPerformances
 
-
 class City(base.UrlBasedEntity, HasPerformances):
     hours_offset = db.IntegerProperty(default=0)
     minutes_offset = db.IntegerProperty(default=0)
@@ -13,5 +12,5 @@ class City(base.UrlBasedEntity, HasPerformances):
 
     def get_timedelta(self):
         return timedelta(hours=self.hours_offset, minutes=self.minutes_offset)
-    
+
     

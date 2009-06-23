@@ -13,3 +13,7 @@ class Venue(base.NamedEntity, HasPerformances):
         if (not self.is_saved() and self.city.get_venue_by_url(self.url)):
             raise ValueError('This URL is already being used by another venue in ' + self.city.name)
         super(Venue, self).put()
+    
+    def get_route(self):
+        return '/'+self.city.url+'/venues/'+self.url
+        

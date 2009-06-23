@@ -9,7 +9,6 @@ import wsgiref.handlers
 
 ROUTES = [
     ('/([\w-]+)/shows/([\w-]+)/*.*', ShowHandler),
-#    ('/(' + '|'.join(settings.COMPANY_URLS) + ')/([\w-]+)/*.*', CompanyHandler),
     (r'/([\w-]+)/venues/([\w-]+)/*.*', VenueHandler),
     (r'/([\w-]+)/*.*',  CommonHandler)
 ]
@@ -19,7 +18,8 @@ def main():
     
 def createApp():
     return webapp.WSGIApplication(ROUTES, settings.DEBUG)
-    
+
+        
 
 if __name__ == '__main__':
     main()

@@ -12,4 +12,6 @@ class Show(base.NamedEntity, HasPerformances):
             raise ValueError("This URL is being used for another show by "+self.company.name)
         super(Show, self).put()
         
+    def get_route(self):
+        return '/'+self.company.url+'/shows/'+self.url
   

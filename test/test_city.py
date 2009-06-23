@@ -53,7 +53,9 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.assertTrue(city)
         self.assertEqual(name, city.name)
         self.assertEqual(url, city.url)
-        
+
+    def test_get_route(self):
+        self.assertEqual('/'+self.chennai.url,self.chennai.get_route())        
         
         
         
