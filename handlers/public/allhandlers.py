@@ -1,8 +1,10 @@
-import wsgiref.handlers, settings, datetime
 from handlers import base
 from models.city import City
-from models.performance import Performance
 from models.company import Company
+from models.performance import Performance
+import datetime
+import settings
+import wsgiref.handlers
 
 class CommonHandler(base.CrudHandler):
     def get(self, url):
@@ -36,7 +38,7 @@ class VenueHandler(base.CrudHandler):
         self.render('public/venue.html', dict(venue=venue, performances=performances))
         
 class ShowHandler(base.CrudHandler):
-    def get(self, path_url, company_url, show_url):
+    def get(self, company_url, show_url):
         company = Company.get_by_url(company_url)
         if company: show = company.get_show_by_url(show_url)
         else:

@@ -36,6 +36,8 @@ class UrlBasedEntity(NamedEntity):
             raise ValueError("This URL is already in use.")
         super(UrlBasedEntity, self).put()
 
+    def get_route(self):
+        return '/'+self.url
 
 class FixedOffset(tzinfo):
     def __init__(self, offset):

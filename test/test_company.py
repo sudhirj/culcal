@@ -39,7 +39,8 @@ class CompanyTests(extendedtestcase.ExtendedTestCase):
         self.assertEqual(name, company.name)
         self.assertEqual(url, company.url)
 
-        
+    def test_get_route(self):
+        self.assertEqual('/'+self.evam.url,self.evam.get_route())  
         
         
         
