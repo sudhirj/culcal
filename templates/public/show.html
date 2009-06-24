@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{show.name|capfirst}}{%endblock%}
 {% block heading%}{{show.name|capfirst}}{%endblock%}
+{% block url %}{{show.company.url}}/shows/{{show.url}}{% endblock %}
+{% block sub_url %}{{show.company.get_route}}{% endblock %}
+{% block sub_text %}{{show.company.name|capfirst}}{% endblock %}
+
 {% block content%}
 <div>
     {% include "performances.html" %}

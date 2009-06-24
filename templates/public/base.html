@@ -2,9 +2,11 @@
 <html>
 <head>
 	<title>What's Going On : {% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="/static/css/main.css" type="text/css" media="screen" />
 </head>
 <body>
-	<h1>{% block heading %}{%endblock%}</h1>
+	<h1>What's going on in <a href="/{% block url %}{% endblock %}">{% block heading %}{%endblock%}</a><sup><a href="{% block sub_url %}{% endblock %}">{% block sub_text %}{% endblock %}</a></sup>?</h1>
 	{% block content %}{% endblock %}
 </body>
 </html>

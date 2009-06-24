@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{{venue.name|capfirst}}{%endblock%}
 {% block heading%}{{venue.name|capfirst}}{%endblock%}
+{% block url %}{{venue.city.url}}/venues/{{venue.url}}{% endblock %}
+{% block sub_url %}{{venue.city.get_route}}{% endblock %}
+{% block sub_text %}{{venue.city.name|capfirst}}{% endblock %}
 {% block content%}
 <div>
     {% include "performances.html" %}

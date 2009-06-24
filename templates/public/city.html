@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{city.name|capfirst}}{%endblock%}
 {% block heading%}{{city.name|capfirst}}{%endblock%}
+{% block url %}{{city.url}}{% endblock %}
 {% block content%}
 <div>
     {% include "performances.html" %}
