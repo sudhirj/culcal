@@ -1,4 +1,4 @@
-body{margin:3em;font-family:Georgia, Arial;}
+body{margin:3em;font-family:Georgia, Arial;font-size:100%;}
 sup {vertical-align:top;font-size:0.75em;}
 a {text-decoration:none;color:#3b5998;}
 a:hover{text-decoration:underline;}
@@ -10,4 +10,8 @@ h3 {font-size:1.6em;}
 h4 {font-size:1.4em;}
 h5 {font-size:1.2em;}
 
-.day-schedule{margin:1em 0;}
+.day-schedule{margin:0 0 1em 0;}
+.day-schedule p {text-indent:-5em;padding-left:5.5em;margin-bottom:0.3em;}
+.column{float:left;-moz-border-radius:0.3em;-webkit-border-radius:0.3em;background:#efefef;width:32em;padding:0.7em;margin:0 1em 1em 0;line-height:1.2em;}
+.column.main {width:34em;}
+.column.secondary{width:24em;}
