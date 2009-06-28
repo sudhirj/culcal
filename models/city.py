@@ -13,4 +13,6 @@ class City(base.UrlBasedEntity, HasPerformances):
     def get_timedelta(self):
         return timedelta(hours=self.hours_offset, minutes=self.minutes_offset)
 
-    
+    def delete(self):
+        for venue in self.venues: venue.delete()
+        return super(City, self).delete()

@@ -28,7 +28,7 @@ class PerformanceModelTests(extendedtestcase.ExtendedTestCase):
         self.assertEqual(self.chennai, perf.cached_city)
         self.assertEqual(self.evam, perf.cached_company)
 
-    def test_company_performance(self):
+    def test__performance_creation(self):
         performance_route = '/_admin/performance'
         self.admin_app.post(performance_route, {'action':'create'}, status=403) # tells blank posts to bugger off 
         old_count = self.lady_andal.get_new_performances().count()
