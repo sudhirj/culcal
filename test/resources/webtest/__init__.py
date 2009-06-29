@@ -21,7 +21,7 @@ except ImportError:
     from StringIO import StringIO
 import re
 from webob import Response, Request
-from webtest import lint
+import lint
 
 __all__ = ['TestApp']
 
