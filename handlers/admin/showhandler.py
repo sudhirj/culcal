@@ -14,7 +14,7 @@ class ShowHandler(base.CrudHandler):
     Show(name = self.read('name'), 
         url = self.read('url'), 
         company = company,
-        desc = self.read('desc')).put()
+        description = self.read('desc')).put()
     self.get()
   
   def delete(self):

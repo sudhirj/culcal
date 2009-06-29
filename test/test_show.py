@@ -44,7 +44,7 @@ class ShowTests(extendedtestcase.ExtendedTestCase):
         self.assertTrue(show)
         self.assertEqual(name, show.name)
         self.assertEqual(url, show.url)
-        self.assertEqual(description, show.desc)
+        self.assertEqual(description, show.description)
         
     def test_cascading_deletes(self):
         self.make_performance(self.hamlet, self.lady_andal, self.one_day_later)
