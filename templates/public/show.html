@@ -3,10 +3,14 @@
 {% block heading%}{{show.name|capfirst}}{%endblock%}
 {% block url %}{{show.company.url}}/shows/{{show.url}}{% endblock %}
 {% block sub_url %}{{show.company.get_route}}{% endblock %}
-{% block sub_text %}{{show.company.name|capfirst}}{% endblock %}
+{% block sub_text %}by {{show.company.name|capfirst}}{% endblock %}
 
 {% block content%}
 <div>
-    {% include "performances.html" %}
+	{% include "performances.html" %}
 </div>
 {%endblock%}
+
+{% block sub_content %}
+{{show.description}}
+{% endblock %}

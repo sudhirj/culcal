@@ -1,4 +1,4 @@
-application: culcal
+application: whats-going-on-in
 version: 1
 runtime: python
 api_version: 1

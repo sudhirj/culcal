@@ -1,11 +1,11 @@
 from google.appengine.ext import db
 from models.city import City
-from models.mixins import HasPerformances
+from models.mixins import HasPerformances, HasUrl
 import base
 import validators
 
 
-class Venue(base.NamedEntity, HasPerformances):
+class Venue(base.NamedEntity, HasPerformances, HasUrl):
     city = db.ReferenceProperty(City, collection_name='venues')
     url = db.StringProperty(required=True, validator=validators.validate_url)
     
@@ -16,4 +16,8 @@ class Venue(base.NamedEntity, HasPerformances):
     
     def get_route(self):
         return '/'+self.city.url+'/venues/'+self.url
-        
+       
+    def delete(self):
+        for performance in self.performances: performance.delete()
+        return super(Venue, self).delete()
+     

@@ -42,5 +42,16 @@ class CompanyTests(extendedtestcase.ExtendedTestCase):
     def test_get_route(self):
         self.assertEqual('/'+self.evam.url,self.evam.get_route())  
         
+    def test_cascading_deletes(self):
+        company = Company(name=self.random(), url = self.random())
+        company.put()
+        
+        show_url = self.random()
+        show = Show(name= self.random(), url = show_url, company = company)
+        show.put()
+        
+        self.assertTrue(Show.get_by_url(show_url))
+        company.delete()
+        self.assertFalse(Show.get_by_url(show_url))
         
         

@@ -3,6 +3,7 @@ from google.appengine.ext import db
 import re
 import settings
 import validators
+from mixins import HasUrl
 
 class Entity(db.Model):
     created_at = db.DateTimeProperty(auto_now_add=True)
@@ -23,14 +24,8 @@ class NamedEntity(Entity):
     
     
   
-class UrlBasedEntity(NamedEntity):
-  
+class UrlBasedEntity(NamedEntity, HasUrl):
     url = db.StringProperty(required=True, validator=validators.validate_url)
-  
-    @classmethod
-    def get_by_url(cls, url):
-        return cls._get_attribute_by_value(cls.all(), 'url', url)
-    
     def put(self):
         if (not self.is_saved()) and self.get_by_url(self.url):
             raise ValueError("This URL is already in use.")
@@ -38,6 +33,7 @@ class UrlBasedEntity(NamedEntity):
 
     def get_route(self):
         return '/'+self.url
+        
 
 class FixedOffset(tzinfo):
     def __init__(self, offset):

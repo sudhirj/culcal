@@ -12,3 +12,7 @@ class Company(base.UrlBasedEntity, HasPerformances):
     def put(self):
         if City.get_by_url(self.url): raise ValueError('This url is being used by a city')
         return super(Company, self).put()
+        
+    def delete(self):
+        for show in self.shows: show.delete()
+        return super(Company, self).delete()

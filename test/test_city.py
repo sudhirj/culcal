@@ -55,7 +55,13 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.assertEqual(url, city.url)
 
     def test_get_route(self):
-        self.assertEqual('/'+self.chennai.url,self.chennai.get_route())        
+        self.assertEqual('/'+self.chennai.url,self.chennai.get_route()) 
+    
+    def test_cascading_delete(self):
+        venue_url = self.lady_andal.url
+        
+        self.chennai.delete()
+        self.assertFalse(Venue.get_by_url(venue_url))
         
         
         

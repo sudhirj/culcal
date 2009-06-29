@@ -13,7 +13,8 @@ class ShowHandler(base.CrudHandler):
     if not company: raise Exception("That company doesn't exist.")
     Show(name = self.read('name'), 
         url = self.read('url'), 
-        company = company).put()
+        company = company,
+        description = self.read('desc')).put()
     self.get()
   
   def delete(self):
