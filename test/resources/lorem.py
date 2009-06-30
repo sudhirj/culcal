@@ -2073,7 +2073,8 @@ def do_lorem(n, l, c, q):
         words = words.replace('\n', ' ')
         words = words.replace('  ', ' ')
         words = words.split(' ')
-
+        text = ""
+        
         while n:
             if n > len(words):
                 n1 = len(words)
@@ -2083,9 +2084,9 @@ def do_lorem(n, l, c, q):
                 n = 0
 
             for i in xrange(n1):
-                print words[i],
+                text += words[i],
 
-        print
+        return text
 
 if __name__ == '__main__':
     (options, args) = do_parse()
