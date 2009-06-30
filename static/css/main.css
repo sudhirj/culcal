@@ -1,21 +1,18 @@
-body{margin:3em;font-family:Georgia,serif,sans;font-size:100%;}
+body{margin:3em;font-family:Georgia, serif;font-size:100%;}
 sup {vertical-align:top;font-size:0.75em;}
 a {text-decoration:none;color:#3b5998;}
 a:hover{text-decoration:underline;}
 h1, h2, h3, h4, h5, h6 {margin-bottom:0.3em;}
 h1 {font-size:2em;margin-bottom:0.6em;line-height:1em;}
 h1 sup a{font-size:0.7em;vertical-align:top;margin:0 0.3em;font-style:italic;}
-h2 {font-size:1.8em;}
-h3 {font-size:1.6em;}
-h4 {font-size:1.4em;}
-h5 {font-size:1.2em;}
+h5 {font-size:1em;font-weight:bold;}
 
 .day-schedule{margin:0 0 1em 0;}
 .day-schedule p {text-indent:-5em;padding-left:5.5em;margin-bottom:0.3em;}
 .column{float:left;
     -moz-border-radius:0.3em;
     -webkit-border-radius:0.3em;
-    background:#efefef;
+    background:#eee;
     width:32em;
     padding:1em;
     margin:0 1em 1em 0;
@@ -24,4 +21,4 @@ h5 {font-size:1.2em;}
 .column.secondary{width:24em;}
 .clear {clear:both;}
 
-#footer{padding:0.7em 0.5em;border-top:0.1em solid #efefef;font-size:0.9em;margin-top:0.7em;text-align:center;}
+#footer{padding:0.7em 0.5em;border-top:0.1em solid #eee;font-size:0.9em;margin-top:0.7em;text-align:center;}
