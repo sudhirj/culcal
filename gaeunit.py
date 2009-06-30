@@ -434,18 +434,6 @@ _MAIN_PAGE_CONTENT = """
         </tbody></table>
     </div>
     <div id="errorarea"></div>
-    <div id="footerarea">
-        <div id="weblink">
-        <p>
-            Please visit the <a href="http://code.google.com/p/gaeunit">project home page</a>
-            for the latest version or to report problems.
-        </p>
-        <p>
-            Copyright 2008-2009 <a href="mailto:George.Z.Lei@Gmail.com">George Lei</a>
-            and <a href="mailto:srfarley@gmail.com>Steven R. Farley</a>
-        </p>
-        </div>
-    </div>
 </body>
 </html>
 """
