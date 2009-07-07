@@ -15,8 +15,10 @@ class VenueTests(extendedtestcase.ExtendedTestCase):
         self.assertRaises(ValueError, venue_with_duplicate_url.put)    
          
     def test_perf_mixin_inherit(self):
-        from models.mixins import HasPerformances
+        from models.mixins import HasPerformances, HasLocation
         self.assertTrue(issubclass(Venue, HasPerformances))
+        self.assertTrue(issubclass(Venue, HasLocation))
+        self.assertTrue(hasattr(self.lady_andal, 'location'))
         self.assertTrue(hasattr(self.lady_andal, 'performances'))
         
     def test_get_route(self):
@@ -30,3 +32,4 @@ class VenueTests(extendedtestcase.ExtendedTestCase):
         perf_count = Performance.all().count()
         self.lady_andal.delete()
         self.assertEqual(perf_count-2,Performance.all().count())
+        

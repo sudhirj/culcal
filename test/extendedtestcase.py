@@ -10,6 +10,7 @@ from resources.webtest import TestApp
 from handlers.public import main as public_main
 from handlers.admin import main as admin_main
 from resources.stubout import StubOutForTesting
+from resources.mox import Mox
 
 class ExtendedTestCase(unittest.TestCase): 
     public_app = TestApp(public_main.createApp())
@@ -24,6 +25,7 @@ class ExtendedTestCase(unittest.TestCase):
     def setUp(self):
         self.make_test_data()
         self.login()
+        self.mox = Mox()
       
     def tearDown(self):
         self.logout()

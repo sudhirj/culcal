@@ -1,16 +1,14 @@
-key = 'ABQIAAAAdOCIY5iMV76jbHcybACMhxQi34lAQvM27VfTNvVaic9PtTFTExQT6O_D3Qz8PAwmNygHnmR1lYm7qQ'
-endpoint = "http://maps.google.com/staticmap?sensor=false"
+import settings
 
 class StaticMapBuilder:
-    url = endpoint+'&key='+key
-    marker = None
-    size = dict(x = 300, y = 300)
+    def __init__(self):
+        self.url = settings.MAP_ENDPOINT+'&key='+settings.MAP_KEY
+        self.marker = None
+        self.size = dict(x = settings.MAP_SIZE['x'], y = settings.MAP_SIZE['y'])
     
     def addMarker(self, lat, lon):
         self.marker = dict(lat = lat, lon = lon)
-        
-    def setSize(self, x, y):
-        self.size['x'], self.size['y'] = x, y
+        return self
     
     def build(self):
         self.url+='&size='+str(self.size['x'])+'x'+str(self.size['y'])

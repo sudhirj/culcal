@@ -9,3 +9,6 @@
     {% include "performances.html" %}
 </div>
 {%endblock%}
+{% block sub_content %}
+	<img src="{{venue.get_map_url}}"/>
+{% endblock %}

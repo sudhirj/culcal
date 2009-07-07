@@ -1,6 +1,8 @@
 import datetime
 from google.appengine.ext import db
 import validators
+import helpers
+from helpers.staticmap import StaticMapBuilder
 
 # These mixins are only applicable to class derived from the base entity in base.py
 
@@ -16,3 +18,7 @@ class HasUrl:
     @classmethod
     def get_by_url(cls, url):
         return cls._get_attribute_by_value(cls.all(), 'url', url)
+        
+class HasLocation:
+    def get_map_url(self):
+        return StaticMapBuilder().addMarker(self.location.lat, self.location.lon).build()
