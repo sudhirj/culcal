@@ -6,6 +6,7 @@ import datetime
 import settings
 import wsgiref.handlers
 
+
 class CommonHandler(base.CrudHandler):
     def get(self, url):
         city = City.get_by_url(url)
@@ -18,10 +19,10 @@ class CommonHandler(base.CrudHandler):
         data_type = 'city' if city else 'company'
         data = city or company
         performances = data.get_new_performances().fetch(50)
-        render_data = dict(performances = performances)
+        render_data = dict(performances=performances)
         render_data[data_type] = data 
         
-        self.render('public/'+data_type+'.html', render_data)
+        self.render('public/' + data_type + '.html', render_data)
         
        
       

@@ -8,6 +8,7 @@ class TestStaticMapBuilder(unittest.TestCase):
         self.assertTrue(url.startswith(settings.MAP_ENDPOINT))
         self.assertTrue(url.index('&key='+settings.MAP_KEY))
         self.assertTrue(url.index('&size='+str(settings.MAP_SIZE['x'])+'x'+str(settings.MAP_SIZE['y'])))
+        self.assertTrue(url.index('&zoom='+str(settings.MAP_ZOOM)))
         
     def testSingleMarker(self):
         builder = StaticMapBuilder()

@@ -1,7 +1,6 @@
 from google.appengine.ext import webapp
 import cgi
 import sys
-import traceback
 import utils
 import wsgiref.handlers
 
