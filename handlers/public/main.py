@@ -1,7 +1,7 @@
 from google.appengine.dist import use_library
 use_library('django', '1.0')
 from google.appengine.ext import webapp
-from handlers.public.allhandlers import VenueHandler, ShowHandler, CommonHandler
+from handlers.public.allhandlers import VenueHandler, ShowHandler, CommonHandler, HomepageHandler
 import logging
 import re
 import settings
@@ -10,7 +10,8 @@ import wsgiref.handlers
 ROUTES = [
     ('/([\w-]+)/shows/([\w-]+)/*.*', ShowHandler),
     (r'/([\w-]+)/venues/([\w-]+)/*.*', VenueHandler),
-    (r'/([\w-]+)/*.*',  CommonHandler)
+    (r'/([\w-]+)/*.*',  CommonHandler),
+    (r'.*', HomepageHandler)
 ]
 
 def main():

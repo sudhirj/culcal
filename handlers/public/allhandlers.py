@@ -51,3 +51,8 @@ class ShowHandler(base.CrudHandler):
             return
         performances = show.get_new_performances().fetch(50)
         self.render('public/show.html', dict(show=show, performances=performances))
+        
+class HomepageHandler(base.CrudHandler):
+    def get(self):
+        self.render('public/home.html', dict(cities = City.all()))
+        

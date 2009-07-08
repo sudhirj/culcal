@@ -20,7 +20,10 @@ h5 {font-size:1em;font-weight:bold;}
 .column.main {width:34em;}
 .column.secondary{width:16em;}
 .column.secondary img.map{width:16em;-moz-border-radius:0.3em;-webkit-border-radius:0.3em;}
+.column p {margin-bottom:1em;}
 
 .clear {clear:both;}
+
+ul.city-list li {margin-bottom:0.3em;} 
 
 #footer{padding:0.7em 0.5em;border-top:0.1em solid #eee;font-size:0.9em;margin-top:0.7em;text-align:center;}
