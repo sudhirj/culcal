@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Home{%endblock%}
+{% block title %}in your city{%endblock%}
 {% block heading%}your city{%endblock%}
 {% block content %}
 <p>This is where you find out what's going on in the world of theatre and music in your city.</p> 
 <p>All of the listings on this site are sent in by the community, so if you're planning something, be sure to <a href="mailto:me@sudhirj.com">let me know</a>.</p>
 {%endblock%}
-{%block sub_content%}
+{%block sub_content%} 
 <ul class="city-list">
 {% for city in cities|dictsort:"name" %}
 <li><a href="{{city.get_route}}">{{city.name}}</a></li>
