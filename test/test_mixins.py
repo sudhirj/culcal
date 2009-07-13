@@ -9,5 +9,5 @@ class Point(HasLocation):
 class HasLocationTests(extendedtestcase.ExtendedTestCase):
     def test_get_static_map(self):
         point = Point()
-        point.location = db.GeoPt(lat = 4, lon = 5)
-        self.assertEqual(StaticMapBuilder().addMarker(4.0,5.0).build(),point.get_map_url())
+        point.location = db.GeoPt(lat=4, lon=5)
+        self.assertEqual(StaticMapBuilder().addMarker(4.0, 5.0).build(), point.get_map_url())

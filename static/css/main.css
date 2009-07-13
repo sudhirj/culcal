@@ -20,7 +20,7 @@ h5 {font-size:1em;font-weight:bold;}
 .column.main {width:34em;}
 .column.secondary{width:16em;}
 .column.secondary img.map{width:16em;-moz-border-radius:0.3em;-webkit-border-radius:0.3em;}
-.column p {margin-bottom:1em;}
+.column p {margin-bottom:0.3em;}
 
 .clear {clear:both;}
 

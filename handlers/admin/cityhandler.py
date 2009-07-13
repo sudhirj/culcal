@@ -5,8 +5,9 @@ from google.appengine.ext import webapp
 from models.city import City
 
 class CityHandler(base.CrudHandler):
-    def get(self):
-        self.render("admin/city.html", dict(cities=City.all()))
+    def get(self, city = ""):
+        current_city = City.get_by_url(city)
+        self.render("admin/city.html", dict(cities=City.all(), current_city = current_city))
   
     def create(self):
         City(name=self.read('name'),
