@@ -9,14 +9,14 @@ class CityHandler(base.CrudHandler):
         current_city = City.get_by_url(city)
         self.render("admin/city.html", dict(cities=City.all(), current_city = current_city))
   
-    def create(self):
+    def create(self, city=""):
         City(name=self.read('name'),
              url=self.read('url'),
              hours_offset=int(self.read('hours')),
              minutes_offset=int(self.read('minutes'))).put()
         self.get()
 
-    def delete(self):
+    def delete(self, city=""):
         city = City.get(self.read('key'))
         if city: city.delete()
         self.get()
