@@ -31,12 +31,12 @@ class CrudHandler(CustomHandler):
     def is_delete_request(self):
         return self.read('action') == 'delete'
         
-    def post(self,*args, **kwargs):
+    def post(self,data_url =""):
         action = self.read('action')
         if not action: return False
-        if action == 'create': self.create()
-        if action == 'update': self.update()
-        if action == 'delete': self.delete()
+        if action == 'create': self.create(data_url)
+        if action == 'update': self.update(data_url)
+        if action == 'delete': self.delete(data_url)
         return True
     
   
