@@ -5,9 +5,9 @@ from google.appengine.ext import webapp
 from models.city import City
 
 class CityHandler(base.CrudHandler):
-    def get(self, city = ""):
+    def get(self, city=""):
         current_city = City.get_by_url(city)
-        self.render("admin/city.html", dict(cities=City.all(), current_city = current_city))
+        self.render("admin/city.html", dict(cities=City.all(), current_city=current_city))
   
     def create(self, city=""):
         City(name=self.read('name'),
@@ -23,7 +23,7 @@ class CityHandler(base.CrudHandler):
         current_city.hours_offset = int(self.read('hours'))
         current_city.minutes_offset = int(self.read('minutes'))
         current_city.put()
-        self.redirect(current_city.url,False)
+        self.redirect(current_city.url, False)
 
     def delete(self, city=""):
         city = City.get(self.read('key'))
