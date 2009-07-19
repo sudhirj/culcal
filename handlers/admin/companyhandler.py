@@ -8,7 +8,7 @@ class CompanyHandler(base.CrudHandler):
   def get(self):
     self.render('admin/company.html', dict(companies = Company.all()))
 
-  def create(self):
+  def create(self, company=None):
     Company(name = self.read('name'), url = self.read('url'), description = self.read('description')).put()
     self.get()
     

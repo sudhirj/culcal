@@ -9,7 +9,7 @@ class VenueHandler(base.CrudHandler):
   def get(self):
     self.render('admin/venue.html', dict(cities=City.all()))
   
-  def create(self):
+  def create(self, Venue= None):
     city = City.get_by_url(self.read('city'))
     if not city: raise Exception("That city doesn't exist.")
     Venue(name=self.read('name'),

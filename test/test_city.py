@@ -53,6 +53,26 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.assertTrue(city)
         self.assertEqual(name, city.name)
         self.assertEqual(url, city.url)
+        
+    def test_city_updating(self):
+        city_route = '/_admin/city'
+        self.admin_app.post(city_route, {'action':'update'}, status=403) # tells blank posts to bugger off 
+        url = self.random()
+        City(name = self.random(), url = url, hours = 5, minutes = 45).put()
+        
+        new_name = self.random()
+        new_hours = 6
+        new_minutes = 34
+        new_url = self.random()
+        city_data = dict(action='update', name=new_name, url=new_url, hours=new_hours, minutes=new_minutes)
+        self.admin_app.post(city_route+'/'+url, city_data)
+
+        city = City.get_by_url(new_url)
+        self.assertTrue(city)
+        self.assertEqual(new_name, city.name)
+        self.assertEqual(new_url, city.url)    
+        self.assertEqual(new_hours, city.hours_offset)    
+        self.assertEqual(new_minutes, city.minutes_offset)    
 
     def test_get_route(self):
         self.assertEqual('/'+self.chennai.url,self.chennai.get_route()) 

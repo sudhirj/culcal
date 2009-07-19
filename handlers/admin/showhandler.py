@@ -8,7 +8,7 @@ class ShowHandler(base.CrudHandler):
   def get(self):
     self.render('admin/show.html', dict(shows = Show.all(), companies = Company.all()))
   
-  def create(self):
+  def create(self, show = None):
     company = Company.get_by_url(self.read('company'))
     if not company: raise Exception("That company doesn't exist.")
     Show(name = self.read('name'), 

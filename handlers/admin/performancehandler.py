@@ -8,7 +8,7 @@ class PerformanceHandler(base.CrudHandler):
   def get(self):
     self.render('admin/performance.html', dict(performances=Performance.all(), shows=Show.all(), venues=Venue.all()))
   
-  def create(self):
+  def create(self, performance=None):
     show = Show.get(self.read('show_key'))
     if not show: raise Exception("That show doesn't exist.")
     venue = Venue.get(self.read('venue_key'))
