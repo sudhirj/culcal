@@ -18,8 +18,8 @@
 	{% if current_city %}
 		<h3>Edit {{current_city.name}}</h3>
 	{%else %}
-	<h3>Create a new City</h3>
-		{% endif %}
+		<h3>Create a new City</h3>
+	{% endif %}
 	<form action="/_admin/city/{{current_city.url}}" method="POST">
 		<div>
 			<input type="text" name="name" value="{{current_city.name}}"/>

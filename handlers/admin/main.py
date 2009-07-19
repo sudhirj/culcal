@@ -11,7 +11,7 @@ use_library('django', '1.0')
 ROUTES = [
   ('/_admin/city/*(.*)', cityhandler.CityHandler),
   ('/_admin/show', showhandler.ShowHandler),
-  ('/_admin/company', companyhandler.CompanyHandler),
+  ('/_admin/company/*(.*)', companyhandler.CompanyHandler),
   ('/_admin/venue', venuehandler.VenueHandler),
   ('/_admin/performance', performancehandler.PerformanceHandler)
 ]

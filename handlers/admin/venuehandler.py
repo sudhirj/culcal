@@ -1,9 +1,10 @@
-import wsgiref.handlers, settings, logging
+from google.appengine.ext import db, webapp
 from handlers import base
-from google.appengine.ext import webapp
 from models.city import City
 from models.venue import Venue
-from google.appengine.ext import db
+import logging
+import settings
+import wsgiref.handlers
 
 class VenueHandler(base.CrudHandler):
   def get(self):
@@ -19,7 +20,7 @@ class VenueHandler(base.CrudHandler):
     self.get()
   
   def delete(self):
-    venue = Venue.get(self.read('key'))  
+    venue = Venue.get(self.read('key'))
     if venue : venue.delete()
     self.get()
         
