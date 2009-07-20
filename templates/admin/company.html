@@ -4,26 +4,30 @@
 <div>
 	<h3>Existing Companies</h3>
 	{% for company in companies %}
-	<form action="/_admin/company" method="POST">
-		<p>{{ company.name }} ({{company.url}})
+	<form action="/_admin/company/{{company.url}}" method="POST">
+		<p><a href="/_admin/company/{{company.url}}">{{ company.name }} ({{company.url}})</a>
 			<input type="submit" onclick="return confirm('Are you sure you want to delete {{company.name}}?');" value="Delete ?">
 		</p>
-		<input type="hidden" value="{{company.key}}" name="key"/>
 		<input type="hidden" value="delete" name="action"/>
 	</form>
 	{% endfor %}
 </div>
 {% endif %}
 <div>
+	{% if not current_company %}
 	<h3>Create a new company</h3>
-	<form action="/_admin/company" method="POST">
+	{% else %}
+	<h3>Edit the company {{current_company.name}}</h3>
+	{% endif %}
+
+	<form action="/_admin/company/{{current_company.url}}" method="POST">
 		<div>
-			<input type="text" name="name"/>
-			<input type="text" name="url"/>
-			<textarea name="description" rows="2" cols="20"></textarea>
-			<input type="submit" value="Create"/>
+			<input type="text" name="name" value="{{current_company.name}}"/>
+			<input type="text" name="url" value="{{current_company.url}}"/>
+			<textarea name="description" rows="2" cols="20">{{current_company.description}}</textarea>
+			<input type="submit" value="Save"/>
 		</div>
-		<input type="hidden" value="create" name="action"/>
+		<input type="hidden" value="{% if current_company %}update{% else %}create{% endif %}" name="action"/>
 	</form>
 </div>	
 {% endblock %}

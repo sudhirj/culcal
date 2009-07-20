@@ -73,6 +73,14 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.assertEqual(new_url, city.url)    
         self.assertEqual(new_hours, city.hours_offset)    
         self.assertEqual(new_minutes, city.minutes_offset)    
+        
+    def test_city_deletion(self):
+        city_route = '/_admin/city'
+        url = self.random()
+        City(name = self.random(), url = url, hours = 5, minutes = 45).put()        
+        city_data = dict(action='delete')
+        self.admin_app.post(city_route+'/'+url, city_data)
+        self.assertFalse(City.get_by_url(url))
 
     def test_get_route(self):
         self.assertEqual('/'+self.chennai.url,self.chennai.get_route()) 

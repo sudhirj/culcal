@@ -38,6 +38,31 @@ class CompanyTests(extendedtestcase.ExtendedTestCase):
         self.assertTrue(company)
         self.assertEqual(name, company.name)
         self.assertEqual(url, company.url)
+        
+    def test_company_editing(self):
+        company_route = '/_admin/company'
+        url = self.random()
+        Company(name = self.random(), url = url, description = 'desc').put()
+        
+        new_name = self.random()
+        new_url = self.random()
+        new_desc = self.random()
+        
+        company_data = dict(action='update', name=new_name, url=new_url, description = new_desc)
+        self.admin_app.post(company_route+'/'+url, company_data)
+        company = Company.get_by_url(new_url)
+        self.assertEqual(new_name, company.name)
+        self.assertEqual(new_url, company.url)
+        self.assertEqual(new_desc,company.description)
+    
+    def test_company_delete(self):
+        company_route = '/_admin/company'
+        url = self.random()
+        Company(name = self.random(), url = url, description = 'desc').put()
+        company_data = dict(action='delete')
+        self.admin_app.post(company_route+'/'+url, company_data)
+        self.assertFalse(Company.get_by_url(url))
+        
 
     def test_get_route(self):
         self.assertEqual('/'+self.evam.url,self.evam.get_route())  
