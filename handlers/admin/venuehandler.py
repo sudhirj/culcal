@@ -10,13 +10,13 @@ class VenueHandler(base.CrudHandler):
   def get(self):
     self.render('admin/venue.html', dict(cities=City.all()))
   
-  def create(self, Venue= None):
+  def create(self, venue_url= None):
     city = City.get_by_url(self.read('city'))
     if not city: raise Exception("That city doesn't exist.")
     Venue(name=self.read('name'),
         url=self.read('url'),
         city=city,
-        location=db.GeoPt(lat=self.read('lat'), lon=self.read('lon'))).put()
+        location=db.GeoPt(lat=self.read('lat'), lon = self.read('lon'))).put()
     self.get()
   
   def delete(self):

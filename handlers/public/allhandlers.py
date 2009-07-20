@@ -28,16 +28,16 @@ class CommonHandler(base.CrudHandler):
       
 class VenueHandler(base.CrudHandler):
     def get(self, city_url, venue_url):
+        redirect_url = None
         city = City.get_by_url(city_url) 
         if city: venue = city.get_venue_by_url(venue_url)
+        else: redirect_url = '/'
+        if not venue: redirect_url = '/' + city_url
+        if not redirect_url:
+            performances = venue.get_new_performances().fetch(50)
+            self.render('public/venue.html', dict(venue=venue, performances=performances))
         else:
-            self.redirect('/', False)
-            return
-        if not venue:
-            self.redirect('/' + city_url, False)
-            return
-        performances = venue.get_new_performances().fetch(50)
-        self.render('public/venue.html', dict(venue=venue, performances=performances))
+            self.redirect(redirect_url,False)
         
 class ShowHandler(base.CrudHandler):
     def get(self, company_url, show_url):
