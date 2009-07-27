@@ -5,7 +5,7 @@
 	<h3>Existing Shows</h3>
 	{% for show in shows %}
 	<form action="/_admin/show" method="POST">
-		<p>{{ show.name }} ({{show.url}}) by {{show.company.name}}
+		<p><a href="/_admin/show/{{show.url}}">{{ show.name }}</a> ({{show.url}}) by {{show.company.name}}
 			<input type="submit" onclick="return confirm('Do you really want to delete this show?')" value="Delete?">
 		</p>
 		<input type="hidden" value="{{show.key}}" name="key"/>
@@ -16,17 +16,17 @@
 {% endif %}
 <div>
 	<h3>Create a new show</h3>
-	<form action="/_admin/show" method="POST">
-		<input type="hidden" value="create" name="action"/>
+	<form action="/_admin/show/{{current_show.url}}" method="POST">
+		<input type="hidden" value="{% if current_show %}update{%else%}create{% endif %}" name="action"/>
 		<div>
-			<input type="text" name="name"/>
+			<input type="text" name="name" value="{{current_show.name}}"/>
 			<select name = "company">
 				{% for company in companies %}
-				<option value = "{{company.url}}">{{company.name}}</option>
+				<option value = "{{company.url}}" {% ifequal company.url current_show.company.url  %}selected = "selected"{% endifequal %}>{{company.name}}</option>
 				{% endfor %}
 			</select>
-			<input type ="text" name ="url"/>
-			<textarea name="desc"></textarea>
+			<input type ="text" name ="url" value="{{current_show.url}}"/>
+			<textarea name="desc">{{current_show.description}}</textarea>
 			<input type="submit" value="Create"/>
 		</div>
 	</form>

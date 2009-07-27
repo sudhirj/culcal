@@ -46,6 +46,25 @@ class ShowTests(extendedtestcase.ExtendedTestCase):
         self.assertEqual(url, show.url)
         self.assertEqual(description, show.description)
         
+    def test_show_updates_by_admin(self):
+        show_route = '/_admin/show'
+        self.admin_app.post(show_route, {'action':'update'}, status=403) # tells blank posts to bugger off 
+        url = self.random()
+        Show(name=self.random(), url = url, description=self.random(), company=self.evam).put()
+        
+        name = self.random()
+        new_url = self.random()
+        description = self.random()
+        company = self.evam.url
+        show_data = dict(action='update', name=name, url=new_url, desc = description, company = self.evam.url)
+        self.admin_app.post(show_route+'/'+url, show_data)
+        show = Show.get_by_url(new_url)
+        self.assertEqual(show.name,name)
+        self.assertEqual(show.description,description)
+        self.assertEqual(show.company.url,self.evam.url)        
+        
+        
+        
     def test_cascading_deletes(self):
         self.make_performance(self.hamlet, self.lady_andal, self.one_day_later)
         self.make_performance(self.hamlet, self.lady_andal, self.two_days_later)
