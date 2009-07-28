@@ -25,10 +25,12 @@ class ShowHandler(base.CrudHandler):
         show.company = self.check_company()
         show.description = self.read('desc')
         show.put()
+        self.redirect('/_admin/show/')
+        
         
         
     def delete(self, show_url = None):
-        show = Show.get(self.read('key'))  
+        show = Show.get_by_url(show_url) 
         if show : show.delete()
         self.get()
     
