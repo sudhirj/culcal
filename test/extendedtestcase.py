@@ -54,6 +54,8 @@ class ExtendedTestCase(unittest.TestCase):
         self.hamlet.put()
         self.chennai = City(name='Chennai', url='chennai')
         self.chennai.put()
+        self.bangalore = City(name='Bangalore', url='bangalore')
+        self.bangalore.put()
         self.lady_andal = Venue(name='Lady Andal', url='lady_andal', city=self.chennai)
         self.lady_andal.put()
         
