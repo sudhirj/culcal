@@ -20,7 +20,8 @@ class CompanyHandler(base.CrudHandler):
             company.url = self.read('url')
             company.description = self.read('description')
             company.put()
-        self.get()
+        self.redirect('/_admin/company')
+        
     
     def delete(self, company_url=None):
         company = Company.get_by_url(company_url)

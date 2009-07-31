@@ -2,33 +2,37 @@
 {% block content %}
 {% if cities %}
 <div>
-    <h3>Existing Venues in City</h3>
-    {% for city in cities %}
-    <div>
-        <h3>{{city.name}}</h3>
-        {% for venue in city.venues %}
-        <form action="/_admin/venue" method="POST">
-            <p>
-                {{ venue.name }} ({{venue.url}})
+	<h3>Existing Venues in City</h3>
+	{% for city in cities %}
+	<div>
+		<h3>{{city.name}}</h3>
+		{% for venue in city.venues %}
+		<form action="/_admin/venue" method="POST">
+			<p>
+				<a href="/_admin/venue/{{venue.url}}">{{ venue.name }}</a> ({{venue.url}})
 				<input type="submit" value="Delete?">
-            </p><input type="hidden" value="{{venue.key}}" name="key"/><input type="hidden" value="delete" name="action">
-        </form>{% endfor %}
-    </div>{% endfor %}
+			</p><input type="hidden" value="{{venue.key}}" name="key"/><input type="hidden" value="delete" name="action">
+		</form>{% endfor %}
+	</div>{% endfor %}
 </div>{% endif %}
 <div>
-    <h3>Create a new Venue</h3>
-    <form action="/_admin/venue" method="POST">
-        <input type="hidden" value="create" name="action"/>
-        <div>
-            <select name = "city">
-                {% for city in cities %}<option value = "{{city.url}}">{{city.name}}</option>
-                {% endfor %}
-            </select>
-            <input type="text" name="name"/>
-			<input type="text" name ="url"/>
-			<input type="text" name ="lat" value="0"/>
-			<input type="text" name ="lon" value="0"/>
+	{% if not current_venue %}
+	<h3>Create a new Venue</h3>
+	{% else %}
+	<h3>Edit venue: {{current_venue.name}}</h3>
+	{% endif %}
+	<form action="/_admin/venue/{{current_venue.url}}" method="POST">
+		<input type="hidden" value="{% if current_venue %}update{%else%}create{% endif %}" name="action"/>
+		<div>
+			<select name = "city">
+				{% for city in cities %}<option value = "{{city.url}}" {% ifequal city.url current_venue.city.url  %}selected = "selected"{% endifequal %}>{{city.name}}</option>
+				{% endfor %}
+			</select>
+			<input type="text" name="name" value = "{{current_venue.name}}"/>
+			<input type="text" name ="url" value = "{{current_venue.url}}"/>
+			<input type="text" name ="lat" value="{{current_venue.location.lat}}"/>
+			<input type="text" name ="lon" value="{{current_venue.location.lon}}"/>
 			<input type="submit" value="Create"/>
-        </div>
-    </form>
+		</div>
+	</form>
 </div>{% endblock %}

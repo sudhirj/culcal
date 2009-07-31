@@ -7,8 +7,8 @@ import settings
 import wsgiref.handlers
 
 class VenueHandler(base.CrudHandler):
-    def get(self):
-        self.render('admin/venue.html', dict(cities=City.all()))
+    def get(self, venue_url = None):
+        self.render('admin/venue.html', dict(cities=City.all(), current_venue = Venue.get_by_url(venue_url)))
   
     def create(self, venue_url= None):
         city = self.check_city()
@@ -26,6 +26,7 @@ class VenueHandler(base.CrudHandler):
         venue.city=self.check_city()
         venue.location=db.GeoPt(lat=self.read('lat'), lon = self.read('lon'))
         venue.put()
+        self.redirect('/_admin/venue/')
         
     def check_city(self):
         city = City.get_by_url(self.read('city'))

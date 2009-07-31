@@ -23,7 +23,7 @@ class CityHandler(base.CrudHandler):
         current_city.hours_offset = int(self.read('hours'))
         current_city.minutes_offset = int(self.read('minutes'))
         current_city.put()
-        self.redirect(current_city.url, False)
+        self.redirect('/_admin/city', False)
 
     def delete(self, city_url=None):
         city = City.get_by_url(city_url)
