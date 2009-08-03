@@ -13,7 +13,7 @@ ROUTES = [
   ('/_admin/show/*(.*)', showhandler.ShowHandler),
   ('/_admin/company/*(.*)', companyhandler.CompanyHandler),
   ('/_admin/venue/*(.*)', venuehandler.VenueHandler),
-  ('/_admin/performance', performancehandler.PerformanceHandler)
+  ('/_admin/performance/*(.*)', performancehandler.PerformanceHandler)
 ]
 
 def main():

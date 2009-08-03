@@ -5,7 +5,7 @@ from models.show import Show
 import datetime
 
 class PerformanceHandler(base.CrudHandler):
-  def get(self):
+  def get(self, url = None):
     self.render('admin/performance.html', dict(performances=Performance.all(), shows=Show.all(), venues=Venue.all()))
   
   def create(self, performance=None):
@@ -24,7 +24,7 @@ class PerformanceHandler(base.CrudHandler):
                 ).put()
     self.get()
   
-  def delete(self):
+  def delete(self, key = None):
     performance = Performance.get(self.read('key'))  
     if performance : performance.delete()
     self.get()
