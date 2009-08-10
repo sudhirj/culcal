@@ -6,7 +6,10 @@
 	<link rel="stylesheet" href="/static/css/main.css" type="text/css" media="screen" />
 </head>
 <body>
-	<h1>What's going on in <a href="/{% block url %}{% endblock %}">{% block heading %}{%endblock%}</a><sup><a href="{% block sub_url %}{% endblock %}">{% block sub_text %}{% endblock %}</a></sup>?</h1>
+	<div class="header">
+	<h1 class="float-left">What's going on in <a href="/{% block url %}{% endblock %}">{% block heading %}{%endblock%}</a><sup><a href="{% block sub_url %}{% endblock %}">{% block sub_text %}{% endblock %}</a></sup>?</h1>
+	<div class="links"><a href="/">Home</a> | Sign In</div>
+	</div>
 	<div id="content">
 		<div class="column main rounded">{% block content %}{% endblock %}</div>
 		<div class="column secondary">{% block sub_content %}{% endblock %}</div>

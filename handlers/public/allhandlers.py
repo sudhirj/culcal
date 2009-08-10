@@ -24,8 +24,6 @@ class CommonHandler(base.CrudHandler):
         
         self.render('public/' + data_type + '.html', render_data)
         
-       
-      
 class VenueHandler(base.CrudHandler):
     def get(self, city_url, venue_url):
         redirect_url = None
