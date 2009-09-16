@@ -16,11 +16,19 @@ class HasLocationTests(extendedtestcase.ExtendedTestCase):
 
 class HasPerformancesTest(extendedtestcase.ExtendedTestCase):
     def test_get_new_performances_with_start_point(self):
-        perf1 = self.make_performance(self.hamlet,self.lady_andal,self.one_day_later)
-        perf2 = self.make_performance(self.hamlet,self.lady_andal,self.two_days_later)
         perf3 = self.make_performance(self.hamlet,self.lady_andal,self.three_days_later)
+        perf2 = self.make_performance(self.hamlet,self.lady_andal,self.two_days_later)
+        perf1 = self.make_performance(self.hamlet,self.lady_andal,self.one_day_later)
+
+        first_page = self.hamlet.get_new_performances().fetch(100)
+        self.assertEqual(3,len(first_page))
+        self.assertTrue(first_page.index(perf1) < first_page.index(perf2) < first_page.index(perf3))
         
-        self.assertEqual(3,len(self.hamlet.get_new_performances().fetch(100)))
-        self.assertEqual(2,len(self.hamlet.get_new_performances(start_after=perf1.time_sort).fetch(100)))
-        self.assertEqual(1,len(self.hamlet.get_new_performances(start_after=perf2.time_sort).fetch(100)))
+        second_page = self.hamlet.get_new_performances(start_after=perf1.time_sort).fetch(100)
+        self.assertEqual(2,len(second_page))
+        self.assertTrue(second_page.index(perf2) < second_page.index(perf3))
+        
+        last_page = self.hamlet.get_new_performances(start_after=perf2.time_sort).fetch(100)
+        self.assertEqual(1,len(last_page))
+        last_page.index(perf3)
    
