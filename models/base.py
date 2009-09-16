@@ -16,11 +16,14 @@ class Entity(db.Model):
         
   
 class NamedEntity(Entity):
-
     def validate_name(string):
         if string == None or string.isspace() : raise ValueError("Name can't be blank")
 
     name = db.StringProperty(required=True, validator=validate_name)
+
+    @property
+    def str(self):
+        return self.name.upper().strip().replace(' ','')
     
     
   

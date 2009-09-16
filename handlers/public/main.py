@@ -8,7 +8,7 @@ import settings
 import wsgiref.handlers
 
 ROUTES = [
-    ('/([\w-]+)/shows/([\w-]+)/*.*', ShowHandler),
+    (r'/([\w-]+)/shows/([\w-]+)/*.*', ShowHandler),
     (r'/([\w-]+)/venues/([\w-]+)/*.*', VenueHandler),
     (r'/([\w-]+)/*.*',  CommonHandler),
     (r'.*', HomepageHandler)
