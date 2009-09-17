@@ -31,3 +31,6 @@ h5 {font-size:1em;font-weight:bold;}
 ul.city-list li {margin-bottom:0.3em;} 
 
 #footer{padding:1em 0.5em;border-top:0.1em solid #eee;font-size:0.9em;text-align:center;}
+.pagination {overflow:hidden;}
+.pagination .prev{float:left;}
+.pagination .next{float:right;}

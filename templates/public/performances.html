@@ -1,23 +1,28 @@
 {% regroup performances|dictsort:"utc_date_time" by get_local_time.date as date_grouped %}
 {% for group in date_grouped %}
 <div class="day-schedule">
-<h5>{{group.grouper|date:"l, j\<\s\u\p\>S\<\/\s\u\p\> F Y"|safe}}</h5>
-{% for performance in group.list %}
-<p>
-    {{performance.get_local_time.time|time:"P"}} 
-	{% if not show %}
-	 - <a href="{{performance.show.get_route}}">{{performance.show.name}}</a> 
-	{% endif %}
-	{% if not company and not show%}
-	by <a href="{{performance.cached_company.get_route}}">{{performance.cached_company.name}}</a>
-	{% endif %}
-	{% if not venue %} 
-	at <a href="{{performance.venue.get_route}}">{{performance.venue.name}}</a>
-	{% endif %} 
-	{% if not city and not venue%}
-	in <a href="{{performance.cached_city.get_route}}">{{performance.cached_city.name}}</a>
-	{% endif %}
-</p>
-{% endfor %}
+	<h5>{{group.grouper|date:"l, j\<\s\u\p\>S\<\/\s\u\p\> F Y"|safe}}</h5>
+	{% for performance in group.list %}
+	<p>
+		{{performance.get_local_time.time|time:"P"}} 
+		{% if not show %}
+		- <a href="{{performance.show.get_route}}">{{performance.show.name}}</a> 
+		{% endif %}
+		{% if not company and not show%}
+		by <a href="{{performance.cached_company.get_route}}">{{performance.cached_company.name}}</a>
+		{% endif %}
+		{% if not venue %} 
+		at <a href="{{performance.venue.get_route}}">{{performance.venue.name}}</a>
+		{% endif %} 
+		{% if not city and not venue%}
+		in <a href="{{performance.cached_city.get_route}}">{{performance.cached_city.name}}</a>
+		{% endif %}
+	</p>
+	{% endfor %}
 </div>
 {% endfor %}
+<div class="pagination">
+	{% if start_after %}
+	<a class="next" href="?start_after={{start_after}}">next >></a>
+	{% endif %}
+</div>

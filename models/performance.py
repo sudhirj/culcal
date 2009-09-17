@@ -23,7 +23,7 @@ class Performance(base.Entity):
     def put(self):
         self.cached_city = self.venue.city
         self.cached_company = self.show.company
-        self.time_sort = self.make_time_str(self.utc_date_time) + '|' + self.show.str + '|' +self.venue.str
+        self.time_sort = self.make_time_str(self.utc_date_time) + '|' + self.show.url + '|' +self.venue.url
         return super(Performance, self).put()
     
     def __eq__(self,other):
@@ -32,5 +32,5 @@ class Performance(base.Entity):
         
     @staticmethod
     def make_time_str(dt):
-        return dt.strftime('%Y-%j-%H-%M') if hasattr(dt, "strftime") else dt
+        return dt.strftime('%Y-%m-%d|%H:%M|GMT') if hasattr(dt, "strftime") else dt
    

@@ -2,10 +2,10 @@ from handlers import base
 from models.city import City
 from models.company import Company
 from models.performance import Performance
-import datetime
+import datetime, logging
 import settings
 import wsgiref.handlers
-
+PAGE=2
 
 class CommonHandler(base.CrudHandler):
     def get(self, url):
@@ -18,8 +18,11 @@ class CommonHandler(base.CrudHandler):
         
         data_type = 'city' if city else 'company'
         data = city or company
-        performances = data.get_performances().fetch(50)
-        render_data = dict(performances=performances)
+        start_after = self.read('start_after')
+        performances = data.get_performances(start_after = start_after).fetch(PAGE+1)
+        start_after = performances[-2].time_sort if len(performances) == PAGE+1 else None
+        render_data = dict(performances=performances[:PAGE], 
+                        start_after = start_after)
         render_data[data_type] = data 
         
         self.render('public/' + data_type + '.html', render_data)
