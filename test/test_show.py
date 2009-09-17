@@ -81,6 +81,8 @@ class ShowTests(extendedtestcase.ExtendedTestCase):
         self.hamlet.delete()
         self.assertEqual(perf_count-2,Performance.all().count())
         
+    def test_smoke_show(self):
+        self.public_app.get('/'+self.hamlet.company.url+'/'+self.hamlet.url)
         
         
         

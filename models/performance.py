@@ -23,10 +23,14 @@ class Performance(base.Entity):
     def put(self):
         self.cached_city = self.venue.city
         self.cached_company = self.show.company
-        self.time_sort = self.utc_date_time.strftime('%Y-%j-%H-%M') + '|' + self.show.str + '|' +self.venue.str
+        self.time_sort = self.make_time_str(self.utc_date_time) + '|' + self.show.str + '|' +self.venue.str
         return super(Performance, self).put()
     
     def __eq__(self,other):
         if self.is_saved(): return self.key()==other.key()
         raise Error('Not Implemented')
+        
+    @staticmethod
+    def make_time_str(dt):
+        return dt.strftime('%Y-%j-%H-%M') if hasattr(dt, "strftime") else dt
    

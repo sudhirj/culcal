@@ -16,7 +16,7 @@ class CompanyTests(extendedtestcase.ExtendedTestCase):
         perf2 = self.make_performance(self.hamlet, self.lady_andal, self.two_days_later)
         perf1 = self.make_performance(self.hamlet, self.lady_andal, self.one_day_later)
         perf_old = self.make_performance(self.hamlet, self.lady_andal, self.now - timedelta(days=3))
-        perfs_from_db = self.evam.get_new_performances().fetch(100)
+        perfs_from_db = self.evam.get_performances().fetch(100)
         self.assertEqual(2, len(perfs_from_db))
         self.assertEqual(perf1, perfs_from_db[0])
     
@@ -78,5 +78,8 @@ class CompanyTests(extendedtestcase.ExtendedTestCase):
         self.assertTrue(Show.get_by_url(show_url))
         company.delete()
         self.assertFalse(Show.get_by_url(show_url))
+        
+    def test_smoke_company(self):
+        self.public_app.get("/"+self.evam.url)
         
         

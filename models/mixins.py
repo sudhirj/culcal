@@ -7,12 +7,11 @@ from helpers.staticmap import StaticMapBuilder
 # These mixins are only applicable to class derived from the base entity in base.py
 
 class HasPerformances:
-    def get_new_performances(self, start_after=None):
-        if not start_after: return self.get_performances_from_time(datetime.datetime.now())
-        return self._performace_list.filter('time_sort >', start_after).order('time_sort')
     
-    def get_performances_from_time(self, dt):
-        return self._performace_list.filter('utc_date_time >', dt).order('utc_date_time') 
+    def get_performances(self, start_after=None):
+        from performance import Performance
+        start_after = Performance.make_time_str(start_after or datetime.datetime.now())
+        return self._performace_list.filter('time_sort >', start_after).order('time_sort')
 
     @property
     def _performace_list(self):

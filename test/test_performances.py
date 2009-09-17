@@ -31,7 +31,7 @@ class PerformanceModelTests(extendedtestcase.ExtendedTestCase):
     def test_performance_creation(self):
         performance_route = '/_admin/performance'
         self.admin_app.post(performance_route, {'action':'create'}, status=403) # tells blank posts to bugger off 
-        old_count = self.lady_andal.get_new_performances().count()
+        old_count = self.lady_andal.get_performances().count()
         name = self.random()
         url = self.random()
         performance_data = dict(action='create',
@@ -44,7 +44,7 @@ class PerformanceModelTests(extendedtestcase.ExtendedTestCase):
                                 minute=self.two_days_later.time().minute)
         self.admin_app.post(performance_route, performance_data)
         
-        self.assertEqual(old_count + 1, self.lady_andal.get_new_performances().count())
+        self.assertEqual(old_count + 1, self.lady_andal.get_performances().count())
         result = Performance.all().filter('show =', self.hamlet).filter('venue =', self.lady_andal).filter('utc_date_time =', self.two_days_later).fetch(1)[0]
         self.assertTrue(result)
         

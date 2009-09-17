@@ -73,6 +73,9 @@ class VenueTests(extendedtestcase.ExtendedTestCase):
         self.admin_app.post(self.venue_route+url, venue_data)
         self.assertFalse(Venue.get_by_url(url))
         
+    def test_smoke_venue(self):
+        self.public_app.get("/"+self.lady_andal.city.url+"/"+self.lady_andal.url)
+        
         
 
         

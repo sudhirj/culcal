@@ -30,13 +30,13 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.chennai.minutes_offset = 45
         self.assertEquals(timedelta(hours=4, minutes=45), self.chennai.get_timedelta())
         
-    def test_get_performances_from_time(self):
+    def test_get_performances(self):
         Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=self.one_day_later).put()
         Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=self.three_days_later).put()
-        num_matches = self.chennai.get_performances_from_time(self.two_days_later).count()
+        num_matches = self.chennai.get_performances(self.two_days_later).count()
         self.assertEqual(1, num_matches)
         
-        num_matches = self.chennai.get_performances_from_time(self.now).count()
+        num_matches = self.chennai.get_performances(self.now).count()
         self.assertEqual(2, num_matches)
     
     def test_city_creation(self):
@@ -53,6 +53,10 @@ class CityTests(extendedtestcase.ExtendedTestCase):
         self.assertTrue(city)
         self.assertEqual(name, city.name)
         self.assertEqual(url, city.url)
+    
+    def test_smoke_city(self):
+        city_route = '/'+self.chennai.url
+        self.public_app.get(city_route)
         
     def test_city_updating(self):
         city_route = '/_admin/city'
