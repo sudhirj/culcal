@@ -10,7 +10,9 @@ h5 {font-size:1em;font-weight:bold;}
 
 .header {overflow:hidden;position:relative;border-bottom:0.1em solid #eee;margin-bottom:1em;padding-bottom:1em;}
 
-.header .links {text-align:right;}
+.header .links {float:right;margin-top:0.35em;}
+.header .search {float:right;margin-right:1em;}
+.header .search input{-moz-border-radius:0.4em;-webkit-border-radius:0.4em; border: 1px solid #ccc;font-size:0.8em;padding:0.3em;}
 .day-schedule{margin:0 0 1em 0;}
 .day-schedule p {text-indent:-5em;padding-left:5.5em;margin-bottom:0.3em;}
 .column{float:left;
@@ -34,3 +36,4 @@ ul.city-list li {margin-bottom:0.3em;}
 .pagination {overflow:hidden;}
 .pagination .prev{float:left;}
 .pagination .next{float:right;}
+

@@ -56,4 +56,10 @@ class ShowHandler(base.CrudHandler):
 class HomepageHandler(base.CrudHandler):
     def get(self):
         self.render('public/home.html', dict(cities = City.all()))
+
+class SearchHandler(base.CustomHandler):
+    def post(self):
+        term = self.read('term')
+        performances = Performance.all().filter('search_terms =', term)
+        self.render('public/search.html', dict(performances = performances, term = term))
         

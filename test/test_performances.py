@@ -48,3 +48,13 @@ class PerformanceModelTests(extendedtestcase.ExtendedTestCase):
         result = Performance.all().filter('show =', self.hamlet).filter('venue =', self.lady_andal).filter('utc_date_time =', self.two_days_later).fetch(1)[0]
         self.assertTrue(result)
         
+    def test_search_terms(self):
+        now = datetime.datetime.now()
+        perf = Performance(show=self.hamlet, venue=self.lady_andal, utc_date_time=now)
+        perf.put()
+        self.assertTrue(perf.show.name in perf.search_terms)
+        self.assertTrue(perf.show.company.name in perf.search_terms)
+        self.assertTrue(perf.venue.name in perf.search_terms)
+        self.assertTrue(perf.venue.city.name in perf.search_terms)
+        
+        

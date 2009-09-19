@@ -10,6 +10,7 @@ class Performance(base.Entity):
     utc_date_time = db.DateTimeProperty(required=True)
     venue = db.ReferenceProperty(Venue, collection_name='performances', required=True)
     time_sort = db.StringProperty()
+    search_terms = db.StringListProperty()
     
     cached_city = db.ReferenceProperty(City, collection_name = 'cached_performances', required = False)
     cached_company = db.ReferenceProperty(Company, collection_name = 'cached_performances', required = False)
@@ -24,6 +25,11 @@ class Performance(base.Entity):
         self.cached_city = self.venue.city
         self.cached_company = self.show.company
         self.time_sort = self.make_time_str(self.utc_date_time) + '|' + self.show.url + '|' +self.venue.url
+        self.search_terms = [self.show.name, 
+                            self.show.company.name,
+                            self.venue.name, 
+                            self.venue.city.name]
+            
         return super(Performance, self).put()
     
     def __eq__(self,other):

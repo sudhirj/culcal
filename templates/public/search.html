@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{term}} - Search Results{%endblock%}
+{% block heading%}{{term}}{%endblock%}
+{% block sub_text%}(search results){%endblock%}
+
+{% block url %}{% endblock %}
+{% block content%}
+<div>
+    {% include "performances.html" %}
+</div>
+{%endblock%}
