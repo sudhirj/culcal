@@ -27,7 +27,7 @@ class Performance(base.Entity):
         return super(Performance, self).put()
     
     def __eq__(self,other):
-        if self.is_saved(): return self.key()==other.key()
+        if self.is_saved(): return self.key() == other.key()
         raise Error('Not Implemented')
         
     @staticmethod

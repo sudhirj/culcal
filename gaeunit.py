@@ -1,5 +1,5 @@
 from google.appengine.dist import use_library
-use_library('django', '1.0')
+use_library('django', '1.1')
 '''
 GAEUnit: Google App Engine Unit Test Framework
 

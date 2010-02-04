@@ -1,0 +1,8 @@
+whatsgoingon.in:
+- allow logins @done(2010-02-04)
+- let users create companies
+- let users create shows
+- let users create performances
+- set up widgets on home screen to show last added events and cities
+- a sign out or sign in needs to return to the same page @done(2010-02-04)
+

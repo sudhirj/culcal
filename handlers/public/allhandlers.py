@@ -5,6 +5,7 @@ from models.performance import Performance
 import datetime, logging
 import settings
 import wsgiref.handlers
+import utils
 PAGE=2
 
 class CommonHandler(base.CrudHandler):
@@ -22,7 +23,8 @@ class CommonHandler(base.CrudHandler):
         performances = data.get_performances(start_after = start_after).fetch(PAGE+1)
         start_after = performances[-2].time_sort if len(performances) == PAGE+1 else None
         render_data = dict(performances=performances[:PAGE], 
-                        start_after = start_after)
+                        start_after = start_after,
+                        auth = utils.authdetails(data.get_route()))
         render_data[data_type] = data 
         
         self.render('public/' + data_type + '.html', render_data)
@@ -36,7 +38,9 @@ class VenueHandler(base.CrudHandler):
         if not venue: redirect_url = '/' + city_url
         if not redirect_url:
             performances = venue.get_performances().fetch(50)
-            self.render('public/venue.html', dict(venue=venue, performances=performances))
+            self.render('public/venue.html', dict(venue=venue, 
+                                        performances=performances,
+                                        auth = utils.authdetails(venue.get_route())))
         else:
             self.redirect(redirect_url,False)
         
@@ -51,7 +55,7 @@ class ShowHandler(base.CrudHandler):
             self.redirect('/' + company_url, False)
             return
         performances = show.get_performances().fetch(50)
-        self.render('public/show.html', dict(show=show, performances=performances))
+        self.render('public/show.html', dict(show=show, performances=performances, auth = utils.authdetails(show.get_route())))
         
 class HomepageHandler(base.CrudHandler):
     def get(self):

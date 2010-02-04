@@ -8,7 +8,7 @@
 <body>
 	<div class="header">
 	<h1 class="float-left">What's going on in <a href="/{% block url %}{% endblock %}">{% block heading %}{%endblock%}</a><sup><a href="{% block sub_url %}{% endblock %}">{% block sub_text %}{% endblock %}</a></sup>?</h1>
-	<div class="links"><a href="/">Home</a> | Sign In</div>
+	<div class="links"><a href="/">Home</a> | <a href="{{auth.link}}">{{auth.label}}</a></div>
 	</div>
 	<div id="content">
 		<div class="column main rounded">{% block content %}{% endblock %}</div>

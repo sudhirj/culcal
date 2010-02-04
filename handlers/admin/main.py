@@ -1,11 +1,12 @@
 from google.appengine.dist import use_library
+use_library('django', '1.1')
 from google.appengine.ext import webapp
 from handlers.admin import cityhandler, companyhandler, showhandler, \
     venuehandler, performancehandler
 import logging
 import settings
 import wsgiref.handlers
-use_library('django', '1.0')
+
 
 
 ROUTES = [

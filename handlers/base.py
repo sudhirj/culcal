@@ -2,6 +2,7 @@ from google.appengine.ext import webapp
 import cgi
 import sys
 import utils
+import logging
 import wsgiref.handlers
 
 class CustomHandler(webapp.RequestHandler):
@@ -21,6 +22,7 @@ class CustomHandler(webapp.RequestHandler):
     
     def render(self, template_path, data):
         from google.appengine.ext.webapp import template
+        if not data.has_key('auth'): data.update(dict(auth = utils.authdetails()))
         self.respond(template.render(utils.path(template_path), data))
     
     def read(self, name):
