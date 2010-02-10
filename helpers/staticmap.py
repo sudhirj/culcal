@@ -1,10 +1,10 @@
 import settings
 
 class StaticMapBuilder:
-    def __init__(self):
+    def __init__(self, size = dict(x = 256, y = 256)):
         self.url = settings.MAP_ENDPOINT+'&key='+settings.MAP_KEY
         self.marker = None
-        self.size = dict(x = settings.MAP_SIZE['x'], y = settings.MAP_SIZE['y'])
+        self.size = size
         self.zoom = settings.MAP_ZOOM
     
     def addMarker(self, lat, lon):

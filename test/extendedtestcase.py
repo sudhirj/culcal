@@ -1,10 +1,6 @@
 from google.appengine.api import users
 from google.appengine.ext import db
-from models.city import City
-from models.company import Company
-from models.show import Show
-from models.venue import Venue
-from models.performance import Performance
+from models import City,Company,Show,Venue,Performance
 import unittest, datetime, random
 from resources.webtest import TestApp
 from handlers.public import main as public_main

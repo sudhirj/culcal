@@ -1,5 +1,5 @@
 from google.appengine.ext import db
-from models.performance import Performance
+from models import Performance
 import datetime
 import extendedtestcase
 import logging

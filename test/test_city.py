@@ -1,9 +1,6 @@
 from datetime import timedelta
 from google.appengine.ext.db import *
-from models.base import FixedOffset
-from models.city import City
-from models.performance import Performance
-from models.venue import Venue
+from models import FixedOffset,City,Performance,Venue
 import extendedtestcase
 
 class CityTests(extendedtestcase.ExtendedTestCase):

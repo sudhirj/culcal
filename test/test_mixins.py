@@ -1,7 +1,6 @@
 from google.appengine.ext import db
 import extendedtestcase, logging
-from models.mixins import HasLocation
-from models.city import City
+from models import HasLocation,City
 from helpers.staticmap import StaticMapBuilder
 
 class Point(HasLocation):

@@ -1,7 +1,5 @@
 from google.appengine.ext.db import *
-from models.company import Company
-from models.show import Show
-from models.performance import Performance
+from models import Company,Show,Performance
 import extendedtestcase
 
 class ShowTests(extendedtestcase.ExtendedTestCase):

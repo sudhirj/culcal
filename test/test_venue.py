@@ -1,7 +1,5 @@
 from google.appengine.ext.db import *
-from models.venue import Venue
-from models.performance import Performance
-from models.city import City
+from models import Venue, Performance,City
 import extendedtestcase, logging
 from google.appengine.ext import db
 

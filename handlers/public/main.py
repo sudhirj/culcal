@@ -13,10 +13,10 @@ ROUTES = [
     (r'/([\w-]+)/*.*',  CommonHandler),
     (r'.*', HomepageHandler)
 ]
-
+    
 def main():
     wsgiref.handlers.CGIHandler().run(createApp())
-    
+        
 def createApp():
     return webapp.WSGIApplication(ROUTES, settings.DEBUG)
 

@@ -1,6 +1,5 @@
 from google.appengine.ext import db
-from models import city, company, performance, show, venue
-from models.base import NamedEntity, UrlBasedEntity
+from models import City, Company, Performance, Show, Venue,NamedEntity, UrlBasedEntity
 import extendedtestcase
 
 
@@ -11,11 +10,11 @@ class NamedEntityTests(extendedtestcase.ExtendedTestCase):
     self.assertEqual("name1", entity.name)
   
   def test_inherits(self):
-    self.assertRaises(db.BadValueError, show.Show, None)
-    self.assertRaises(db.BadValueError, venue.Venue, None)
-    self.assertRaises(db.BadValueError, performance.Performance, None)
-    self.assertRaises(db.BadValueError, company.Company, None)
-    self.assertRaises(db.BadValueError, city.City, None)
+    self.assertRaises(db.BadValueError, Show, None)
+    self.assertRaises(db.BadValueError, Venue, None)
+    self.assertRaises(db.BadValueError, Performance, None)
+    self.assertRaises(db.BadValueError, Company, None)
+    self.assertRaises(db.BadValueError, City, None)
     
 
 class UrlBasedEntityTests(extendedtestcase.ExtendedTestCase):
